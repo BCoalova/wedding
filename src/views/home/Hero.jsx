@@ -1,6 +1,6 @@
 import { Container } from '@mui/material'
 /* change to lowerCase .jpg */
-import heroBackgroundImg from '../../assets/img/hero.jpg'
+// import heroBackgroundImg from '../../assets/img/hero.jpg'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import HeroCTA from '../../components/HeroCTA'
 import topLeftFlower from '../../assets/img/topleftflowers.svg'
@@ -9,7 +9,7 @@ function Hero() {
     return (
         <FullHeightCenter
             sx={{
-                backgroundImage: `url(${heroBackgroundImg})`,
+                // backgroundImage: `url(${heroBackgroundImg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'left top',
                 backgroundColor: 'rgba(0,0,0,.3)',
