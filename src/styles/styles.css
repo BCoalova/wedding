@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'MrDeHaviland-Regular';
+    src: url(../assets/fonts/MrDeHaviland-Regular.woff);
+}
+@font-face {
+    font-family: 'ChopinScript';
+    src: url(../assets/fonts/ChopinScript.woff);
+}
+@font-face {
+    font-family: 'GreatVibes';
+    src: url(../assets/fonts/GreatVibes.woff);
+}
+
+body {
+    margin: 0;
+}
+*::selection {
+    background: #557963;
+    color: #ffffff;
+}
