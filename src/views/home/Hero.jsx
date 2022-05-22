@@ -1,4 +1,5 @@
 import { Container } from '@mui/material'
+/* change to lowerCase .jpg */
 import heroBackgroundImg from '../../assets/img/hero.jpg'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import HeroCTA from '../../components/HeroCTA'
