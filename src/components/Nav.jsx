@@ -2,6 +2,7 @@ import { AppBar, Box, Container, IconButton, Menu, Toolbar, Typography, MenuItem
 import AdbIcon from '@mui/icons-material/Adb'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from 'react'
+import maruYBoris from '../assets/img/Untitled-1-01.svg'
 
 const pages = ['Nuestra Boda', 'Locación', 'RSPV', 'Regalos']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -26,9 +27,10 @@ function Nav() {
     }
 
     return (
-        <AppBar position='fixed' sx={{ w: '100%' }}>
+        <AppBar position='fixed' sx={{ width: '100%' }}>
             <Container maxWidth='xxl' sx={{ w: '100%' }}>
                 <Toolbar disableGutters>
+                    <Box component='img' src={maruYBoris} width={100} />
                     {/* <Typography
                             variant='h6'
                             noWrap
@@ -46,7 +48,7 @@ function Nav() {
                         >
                             Maru y Boris
                         </Typography> */}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, color: 'inherit' }}>
                         <IconButton
                             size='large'
                             aria-label='account of current user'
@@ -106,12 +108,12 @@ function Nav() {
 
                     <Stack
                         direction='row'
-                        justifyContent='center'
+                        justifyContent='right'
                         alignItems='center'
                         sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
                     >
                         {pages.map(page => (
-                            <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block', color: 'inherit' }}>
                                 {page}
                             </Button>
                         ))}

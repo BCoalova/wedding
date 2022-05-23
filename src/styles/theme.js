@@ -6,7 +6,7 @@ const theme = createTheme({
             default: '#FFFBF8',
         },
         secondary: {
-            main: '#3e70a0',
+            main: '#BA925D',
             contrastText: '#333',
         },
         primary: {
@@ -16,7 +16,7 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: "'Montserrat', sans-serif",
-        fontSize: 20,
+        fontSize: 16,
         h1: {
             fontFamily: '"ChopinScript"',
             fontSize: 130,
@@ -29,6 +29,14 @@ const theme = createTheme({
                     fontSize: 16,
                     'font-weight': '500',
                     paddingInline: 24,
+                },
+            },
+        },
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#fff',
+                    color: '#BA925D',
                 },
             },
         },
