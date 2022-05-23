@@ -1,3 +1,4 @@
+import CommingSoon from '../../components/CommingSoon'
 import Confirm from './Confirm'
 import Gifts from './Gifts'
 import Hero from './Hero'
@@ -6,10 +7,11 @@ import LocationInfo from './LocationInfo'
 function Sections() {
     return (
         <>
-            <Hero />
+            <CommingSoon />
+            {/* <Hero />
             <LocationInfo />
             <Confirm />
-            <Gifts />
+            <Gifts /> */}
         </>
     )
 }
