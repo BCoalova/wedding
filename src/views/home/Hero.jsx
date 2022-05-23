@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/material'
 /* change to lowerCase .jpg */
-import heroBackgroundImg from '../../assets/img/hero.jpg'
+import heroBackgroundImg from '../../assets/img/ahhhh.jpg'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import HeroCTA from '../../components/HeroCTA'
 // import topLeftFlower from '../../assets/img/topleftflowers.svg'
