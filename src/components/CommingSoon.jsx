@@ -10,34 +10,34 @@ function CommingSoon() {
         <FullHeightCenter sx={{ textAlign: 'center' }}>
             {intervaleD && (
                 <>
-                    <Typography p={2} variant='h1'>
+                    <Typography p={2} variant='h1' color='secondary' fontSize={{ lg: 130, md: 130, sm: 80, xs: 80 }}>
                         {intervaleD.months > 0 && (
                             <>
                                 En{' '}
-                                <Typography variant='h1' component='span'>
+                                <span variant='h1' component='span'>
                                     {intervaleD.months}
-                                </Typography>{' '}
+                                </span>{' '}
                                 meses,
                             </>
                         )}
                         {intervaleD.days > 0 && (
                             <>
-                                <Typography variant='h1' component='span'>
+                                <span variant='h1' component='span'>
                                     {' '}
                                     {intervaleD.days}
-                                </Typography>{' '}
+                                </span>{' '}
                                 días y
                             </>
                         )}{' '}
-                        <Typography variant='h1' component='span'>
+                        <span variant='h1' component='span'>
                             {intervaleD.hours < 10 ? '0' + intervaleD.hours : intervaleD.hours}:
-                        </Typography>
-                        <Typography variant='h1' component='span'>
+                        </span>
+                        <span variant='h1' component='span'>
                             {intervaleD.minutes < 10 ? '0' + intervaleD.minutes : intervaleD.minutes}:
-                        </Typography>
-                        <Typography variant='h1' component='span'>
+                        </span>
+                        <span variant='h1' component='span'>
                             {intervaleD.seconds < 10 ? '0' + intervaleD.seconds : intervaleD.seconds}
-                        </Typography>
+                        </span>
                     </Typography>
                 </>
             )}
