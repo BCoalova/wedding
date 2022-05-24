@@ -3,6 +3,7 @@ import AdbIcon from '@mui/icons-material/Adb'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from 'react'
 import maruYBoris from '../assets/img/Untitled-1-01.svg'
+import maruYBoris2 from '../assets/img/maruyboris.png'
 
 const pages = ['Nuestra Boda', 'Locación', 'RSPV', 'Regalos']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -30,8 +31,8 @@ function Nav() {
         <AppBar position='fixed' sx={{ width: '100%' }}>
             <Container maxWidth='xxl' sx={{ w: '100%' }}>
                 <Toolbar disableGutters>
-                    <Box p={1}>
-                        <Box component='img' src={maruYBoris} width={100} />
+                    <Box /*  p={1} */>
+                        <Box component='img' src={maruYBoris2} width={100} />
                     </Box>
 
                     {/*
