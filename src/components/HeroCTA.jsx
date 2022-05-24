@@ -1,14 +1,14 @@
 import { Button, IconButton, Paper, Stack, Typography } from '@mui/material'
 import useBackCount from '../hooks/useBackCount'
 import MapIcon from '@mui/icons-material/Map'
-import { WEDDING_DATE } from '../constants/index'
+import { WEDDING_DATE2 } from '../constants/index'
 import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { Box } from '@mui/system'
 
 function HeroCTA() {
-    const [intervaleD] = useBackCount(WEDDING_DATE)
+    const [intervaleD] = useBackCount(WEDDING_DATE2)
 
     return (
         <Stack alignItems='center' pl='50%'>
