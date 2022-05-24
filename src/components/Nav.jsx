@@ -31,8 +31,8 @@ function Nav() {
         <AppBar position='fixed' sx={{ width: '100%' }}>
             <Container maxWidth='xxl' sx={{ w: '100%' }}>
                 <Toolbar disableGutters>
-                    <Box /*  p={1} */>
-                        <Box component='img' src={maruYBoris2} width={100} />
+                    <Box p={1}>
+                        <Box component='img' src={maruYBoris} width={100} />
                     </Box>
 
                     {/*
