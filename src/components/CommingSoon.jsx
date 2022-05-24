@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import { WEDDING_DATE, WEDDING_DATE2 } from '../constants'
+import { WEDDING_DATE2 } from '../constants'
 import useBackCount from '../hooks/useBackCount'
 import FullHeightCenter from './FullHeightCenter'
 

@@ -1,4 +1,4 @@
-import countdown from 'countdown'
+import { intervalToDuration } from 'date-fns'
 import { useEffect, useState } from 'react'
 
 function useBackCount(date) {
@@ -6,7 +6,12 @@ function useBackCount(date) {
 
     useEffect(() => {
         let preLoadCountDown = setInterval(() => {
-            setIntervalD(countdown(new Date().getTime(), date.getTime()))
+            setIntervalD(
+                intervalToDuration({
+                    start: new Date(),
+                    end: date,
+                })
+            )
         }, 150)
 
         return () => {
