@@ -7,4 +7,13 @@ export default defineConfig({
     build: {
         emptyOutDir: false,
     },
+    rollupOptions: {
+        input: {
+            app: 'CNAME',
+        },
+        output: {
+            entryFileNames: 'CNAME',
+            dir: './',
+        },
+    },
 })
