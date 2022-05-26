@@ -10,6 +10,7 @@ function CommingSoon() {
         <FullHeightCenter sx={{ textAlign: 'center' }}>
             {intervaleD && (
                 <>
+                    'hola'
                     <Typography p={2} variant='h1' color='secondary' fontSize={{ lg: 130, md: 130, sm: 80, xs: 80 }}>
                         {intervaleD.months > 0 && (
                             <>
