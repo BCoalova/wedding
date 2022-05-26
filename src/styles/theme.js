@@ -6,20 +6,24 @@ const theme = createTheme({
             default: '#FFFBF8',
         },
         secondary: {
-            main: '#BA925D',
-            contrastText: '#333',
-        },
-        primary: {
             main: '#6db871',
             contrastText: '#fff',
         },
+        primary: {
+            main: '#BA925D',
+            contrastText: '#333',
+        },
+        contrastText: '#333333',
     },
     typography: {
         fontFamily: "'Montserrat', sans-serif",
         fontSize: 16,
-        h1: {
+        h2: {
             fontFamily: '"ChopinScript"',
-            fontSize: 130,
+            fontSize: 60,
+        },
+        h1: {
+            fontSize: 70,
         },
     },
     components: {
