@@ -1,6 +1,6 @@
 import FullHeightCenter from '../../components/FullHeightCenter'
 import acuarelaBottomRight from '../../assets/img/Untitled-1-03.svg'
-import RSPV from './RSPV'
+import RSPV from '../../components/RSPV'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import flowers from '../../assets/img/flowers.jpg'
 import { Container } from '@mui/system'
