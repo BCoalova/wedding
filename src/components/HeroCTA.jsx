@@ -9,13 +9,15 @@ function HeroCTA() {
     const [intervaleD] = useBackCount(WEDDING_DATE2)
 
     return (
-        <Stack alignItems='center' sx={{ textAlign: 'center' }}>
-            <Box component='img' src={maruYBoris} width={350} mb={6} />
-            <Stack gap={2} alignItems='center'>
-                <Typography variant='h6'>Sábado 19 de noviembre 2022</Typography>
+        <Stack alignItems='center' sx={{ textAlign: 'center' }} width={450}>
+            <Box component='img' src={maruYBoris} maxWidth={350} width='100%' mb={6} />
+            <Stack width='100%' gap={2} alignItems='center' flexGrow={1}>
+                <Typography variant='h6' fontWeight={400}>
+                    Sábado 19 de noviembre 2022
+                </Typography>
                 {intervaleD && (
-                    <Stack>
-                        <Typography variant='h4' fontWeight={500}>
+                    <>
+                        {/* <Typography variant='h4' fontWeight={500}>
                             {countDownText[0]}
                             <Box component='span' sx={{ color: 'primary.main' }} fontWeight={700}>
                                 {intervaleD.months}
@@ -33,8 +35,54 @@ function HeroCTA() {
                             {intervaleD.minutes < 10 ? '0' + intervaleD.minutes : intervaleD.minutes}
                             {countDownText[4]}
                             {intervaleD.seconds < 10 ? '0' + intervaleD.seconds : intervaleD.seconds}
+                        </Typography> */}
+                        <Typography variant='h6' fontWeight={700}>
+                            Nos vemos
                         </Typography>
-                    </Stack>
+                        <Stack
+                            width='100%'
+                            direction='row'
+                            gap={1}
+                            justifyContent='space-between'
+                            flexGrow={1}
+                            sx={{ color: 'primary.main', borderTop: '1px solid', borderBottom: '1px solid', py: 1 }}
+                        >
+                            {intervaleD.months > 0 && (
+                                <Stack minWidth={60}>
+                                    <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
+                                        {intervaleD.months < 10 ? '0' + intervaleD.months : intervaleD.months}
+                                    </Typography>
+                                    <Typography fontSize={16}>MESES</Typography>
+                                </Stack>
+                            )}
+                            {intervaleD.days > 0 && (
+                                <Stack minWidth={60}>
+                                    <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
+                                        {intervaleD.days < 10 ? '0' + intervaleD.days : intervaleD.days}
+                                    </Typography>
+                                    <Typography fontSize={16}>DÍAS</Typography>
+                                </Stack>
+                            )}
+                            <Stack minWidth={60}>
+                                <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
+                                    {intervaleD.hours < 10 ? '0' + intervaleD.hours : intervaleD.hours}
+                                </Typography>
+                                <Typography fontSize={16}>HORAS</Typography>
+                            </Stack>
+                            <Stack minWidth={60}>
+                                <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
+                                    {intervaleD.minutes < 10 ? '0' + intervaleD.minutes : intervaleD.minutes}
+                                </Typography>
+                                <Typography fontSize={16}>MIN</Typography>
+                            </Stack>
+                            <Stack minWidth={60}>
+                                <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
+                                    {intervaleD.seconds < 10 ? '0' + intervaleD.seconds : intervaleD.seconds}
+                                </Typography>
+                                <Typography fontSize={16}>SEG</Typography>
+                            </Stack>
+                        </Stack>
+                    </>
                 )}
             </Stack>
         </Stack>
