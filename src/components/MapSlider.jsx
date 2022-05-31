@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import GoogleIcon from '@mui/icons-material/Google'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import { Button, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import GoogleIcon from '@mui/icons-material/Google'
-import waze from '../assets/img/waze.svg'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Tab from '@mui/material/Tab'
+import { useState } from 'react'
 import useBoolean from '../hooks/useBoolean'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 const tabsContent = [
     {
@@ -54,47 +52,33 @@ function MapSlider() {
     }
 
     return (
-        <Paper sx={{ p: 2, width: '100%', maxWidth: 1600, marginX: 'auto', zIndex: 10 }} elevation='0'>
-            <Stack sx={{ typography: 'body1' }}>
+        <Paper
+            sx={{
+                p: 2,
+                marginX: 'auto',
+                zIndex: 10,
+                maxWidth: '960px',
+                width: '100%',
+            }}
+            elevation={2}
+        >
+            <Stack>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <TabList onChange={handleChange} aria-label='lab API tabs example'>
+                        <TabList
+                            variant='scrollable'
+                            onChange={handleChange}
+                            aria-label='lab API tabs example'
+                            scrollButtons
+                            allowScrollButtonsMobile
+                        >
                             {tabsContent.map(({ title, id, value }) => (
                                 <Tab label={title} value={value} key={id} />
                             ))}
                         </TabList>
                     </Box>
                     {tabsContent.map(({ id, value, title, src, direction, extra, href }) => (
-                        <TabPanel value={value} key={id} minWidth={1646}>
-                            <Box
-                                style={{
-                                    '--aspect-ratio': '16/9',
-                                    position: 'relative',
-                                    ':before': {
-                                        content: '""',
-                                        display: 'block',
-                                        paddingBottom: 'calc(100% / (var(--aspect-ratio)))',
-                                    },
-                                }}
-                            >
-                                <iframe
-                                    title={title}
-                                    src={src}
-                                    style={{
-                                        border: 0,
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        height: ' 100%',
-                                        width: '100%',
-                                        borderRadius: 10,
-                                    }}
-                                    loading='lazy'
-                                    width='1600'
-                                    height='534'
-                                    referrerpolicy='no-referrer-when-downgrade'
-                                ></iframe>
-                            </Box>
+                        <TabPanel value={value} key={id}>
                             <iframe
                                 title={title}
                                 src={src}
@@ -107,7 +91,7 @@ function MapSlider() {
                                 }}
                                 loading='lazy'
                                 height='450'
-                                referrerpolicy='no-referrer-when-downgrade'
+                                referrerPolicy='no-referrer-when-downgrade'
                             ></iframe>
                             {direction && <Typography mt={2}>Dirección: {direction}</Typography>}
                             {extra && <Typography mt={2}>{extra}</Typography>}
@@ -130,7 +114,6 @@ function MapSlider() {
                                             size='small'
                                             color='secondary'
                                             mt={2}
-                                            title='Copiar dirección'
                                             onClick={() => handleCopyDirection(direction)}
                                         >
                                             {!isOpen ? <ContentCopyIcon /> : <CheckCircleIcon color='primary' />}

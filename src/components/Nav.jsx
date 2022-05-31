@@ -2,10 +2,15 @@ import { AppBar, Box, Container, IconButton, Menu, Toolbar, Typography, MenuItem
 import AdbIcon from '@mui/icons-material/Adb'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from 'react'
-import maruYBoris from '../assets/img/Untitled-1-01.svg'
 import maruYBoris2 from '../assets/img/maruyboris.png'
 
-const pages = ['Nuestra Boda', 'Locación', 'RSPV', 'Regalos']
+const pages = [
+    // { name: 'Nuestra Boda', id: 'nuestraBoda' },
+    { name: 'Inicio', id: 'inicio' },
+    { name: 'Locación', id: 'locacion' },
+    { name: 'RSVP', id: 'rsvp' },
+    { name: 'Regalos', id: 'regalos' },
+]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 function Nav() {
@@ -28,26 +33,27 @@ function Nav() {
     }
 
     return (
-        <AppBar position='fixed' sx={{ width: '100%' }}>
-            <Container maxWidth='xxl' sx={{ w: '100%' }}>
+        <AppBar position='fixed' sx={{ width: '100vw', top: 0, left: 0, right: 0 }}>
+            <Container maxWidth='xxl' /* sx={{ w: '100%' }} */>
                 <Toolbar disableGutters>
-                    <Box p={1}>
-                        <Box component='img' src={maruYBoris} width={100} />
-                    </Box>
-
-                    {/*
                     <Stack
                         direction='row'
-                        justifyContent='right'
+                        justifyContent='center'
                         alignItems='center'
-                        sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+                        sx={{ flexGrow: 1, display: { /*  xs: 'none', */ md: 'flex' } }}
                     >
-                         pages.map(page => (
-                            <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block', color: 'inherit' }}>
-                                {page}
+                        {pages.map(page => (
+                            <Button
+                                key={page.id}
+                                component='a'
+                                href={`#${page.id}`}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, display: 'block', color: 'inherit', px: { sm: 3, xs: 1 } }}
+                            >
+                                {page.name}
                             </Button>
-                        )) 
-                    </Stack>*/}
+                        ))}
+                    </Stack>
                 </Toolbar>
             </Container>
         </AppBar>

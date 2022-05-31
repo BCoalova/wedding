@@ -25,6 +25,9 @@ const theme = createTheme({
         h1: {
             fontSize: 70,
         },
+        allVariants: {
+            color: '#333333',
+        },
     },
     components: {
         MuiButton: {
