@@ -1,6 +1,7 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import DeleteIcon from '@mui/icons-material/Delete'
 import SendIcon from '@mui/icons-material/Send'
+import { LoadingButton } from '@mui/lab'
 import {
     Box,
     Button,
@@ -16,17 +17,16 @@ import {
     Tooltip,
     Typography,
 } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useGlobalContext } from '../context/GlobalContext'
-import useBoolean from '../hooks/useBoolean'
 import useInput from '../hooks/useInput'
 
 export default function RSPV() {
-    const { addNewGuest } = useGlobalContext()
+    const { addNewGuest, loadingSendForm } = useGlobalContext()
     const [comensales, setComensales] = useState([{ name: '', lastName: '', id: 1, age: '' }])
-    const [email, bindEmail /* , resetEmail, clearEmail */] = useInput('')
-    const [phone, bindPhone /* , resetPhone, clearPhone */] = useInput('')
-    const [message, bindMessage /* , resetMessage, clearMessage */] = useInput('')
+    const [email, bindEmail, resetEmail /*, clearEmail */] = useInput('')
+    const [phone, bindPhone, resetPhone /*, clearPhone */] = useInput('')
+    const [message, bindMessage, resetMessage /*, clearMessage */] = useInput('')
 
     const handleNewComensal = id => {
         const lastIndex = comensales.length - 1
@@ -57,20 +57,22 @@ export default function RSPV() {
         setComensales(newArr)
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         const data = {
             comensales,
             email,
             phone,
             message,
+            open: false,
+            guest: 'true',
         }
-        addNewGuest(data)
+        await addNewGuest(data)
+        setComensales([{ name: '', lastName: '', id: 1, age: '' }])
+        resetEmail()
+        resetPhone()
+        resetMessage()
     }
-
-    // useEffect(() => {
-    //     console.log(comensales)
-    // }, [comensales])
 
     return (
         <Box component='form' onSubmit={handleSubmit}>
@@ -81,6 +83,7 @@ export default function RSPV() {
                             <Stack gap={1} flexGrow={1}>
                                 <Stack direction='row' gap={1}>
                                     <TextField
+                                        required
                                         label='Nombre'
                                         size='small'
                                         variant='outlined'
@@ -90,6 +93,7 @@ export default function RSPV() {
                                         name='name'
                                     />
                                     <TextField
+                                        required
                                         label='Apellido'
                                         size='small'
                                         variant='outlined'
@@ -99,7 +103,7 @@ export default function RSPV() {
                                         name='lastName'
                                     />
                                 </Stack>
-                                <FormControl size='small' fullWidth variant='outlined' name='edad'>
+                                <FormControl size='small' fullWidth required variant='outlined' name='edad'>
                                     <InputLabel id='edad'>Edad</InputLabel>
                                     <Select
                                         labelId='edad'
@@ -144,8 +148,8 @@ export default function RSPV() {
                 </Tooltip>
                 <Divider flexItem />
                 <Stack gap={1}>
-                    <TextField label='Correo electrónico' size='small' variant='outlined' {...bindEmail} />
-                    <TextField label='Teléfono' size='small' variant='outlined' type='number' {...bindPhone} />
+                    <TextField required label='Correo electrónico' size='small' type='email' variant='outlined' {...bindEmail} />
+                    <TextField required label='Teléfono' size='small' variant='outlined' type='number' {...bindPhone} />
                 </Stack>
                 <Divider flexItem />
                 <Stack gap={1}>
@@ -161,9 +165,15 @@ export default function RSPV() {
                     </Typography>
                 </Stack>
                 <Box mt={1}>
-                    <Button type='submit' startIcon={<SendIcon />} variant='contained' color='secondary'>
+                    <LoadingButton
+                        loading={loadingSendForm}
+                        type='submit'
+                        startIcon={<SendIcon />}
+                        variant='contained'
+                        color='secondary'
+                    >
                         Enviar
-                    </Button>
+                    </LoadingButton>
                 </Box>
             </Stack>
         </Box>

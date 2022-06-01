@@ -16,7 +16,7 @@ function Confirm() {
                 backgroundPosition: 'top left, bottom right',
                 backgroundSize: { lg: '40vw', md: '50vw', sm: '100%', xs: '100%' },
                 textAlign: 'left',
-                py: { lg: 15, md: 10, sm: 10, xs: 10 },
+                py: { lg: 15, md: 10, sm: 10, xs: 5 },
                 marginTop: '-3px',
             }}
             id='rsvp'

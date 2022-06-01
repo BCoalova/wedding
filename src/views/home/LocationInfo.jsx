@@ -14,7 +14,7 @@ function LocationInfo() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'top right, bottom left',
                 backgroundSize: { lg: '40vw', md: '50vw', sm: '100%', xs: '100%' },
-                py: { lg: 15, md: 10, sm: 10, xs: 10 },
+                py: { lg: 15, md: 10, sm: 10, xs: 5 },
                 position: 'relative',
                 // overflow: 'hidden',
             }}

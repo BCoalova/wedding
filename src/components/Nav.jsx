@@ -1,8 +1,5 @@
-import { AppBar, Box, Container, IconButton, Menu, Toolbar, Typography, MenuItem, Button, Stack } from '@mui/material'
-import AdbIcon from '@mui/icons-material/Adb'
-import MenuIcon from '@mui/icons-material/Menu'
+import { AppBar, Button, Container, Stack, Toolbar } from '@mui/material'
 import { useState } from 'react'
-import maruYBoris2 from '../assets/img/maruyboris.png'
 
 const pages = [
     // { name: 'Nuestra Boda', id: 'nuestraBoda' },
@@ -13,7 +10,7 @@ const pages = [
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-function Nav() {
+function Nav(props) {
     const [anchorElNav, setAnchorElNav] = useState(null)
     const [anchorElUser, setAnchorElUser] = useState(null)
 
@@ -33,7 +30,16 @@ function Nav() {
     }
 
     return (
-        <AppBar position='fixed' sx={{ width: '100vw', top: 0, left: 0, right: 0 }}>
+        <AppBar
+            position='fixed'
+            sx={{
+                width: '100vw',
+                top: { lg: 0, md: 0, sm: 0, xs: 'unset' },
+                bottom: { lg: 'unset', md: 'unset', sm: 'unset', xs: 0 },
+                left: 0,
+                right: 0,
+            }}
+        >
             <Container maxWidth='xxl' /* sx={{ w: '100%' }} */>
                 <Toolbar disableGutters>
                     <Stack

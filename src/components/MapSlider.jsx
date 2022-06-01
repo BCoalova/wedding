@@ -8,6 +8,7 @@ import { IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import { useState } from 'react'
+import copyToClipboard from '../helpers/copyToClipboard'
 import useBoolean from '../hooks/useBoolean'
 
 const tabsContent = [
@@ -47,7 +48,7 @@ function MapSlider() {
 
     const handleCopyDirection = direction => {
         open()
-        navigator.clipboard.writeText(direction)
+        copyToClipboard(direction)
         setTimeout(() => close(), 1500)
     }
 

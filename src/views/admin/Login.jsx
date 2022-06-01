@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import { useGlobalContext } from '../../context/GlobalContext'
 import useInput from '../../hooks/useInput'
+import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
 
 export default function Login() {
     const { login } = useGlobalContext()
@@ -18,13 +19,22 @@ export default function Login() {
     }
 
     return (
-        <FullHeightCenter>
+        <FullHeightCenter
+            sx={{
+                position: 'relative',
+                backgroundImage: `url(${topLeftGradient})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'top left',
+                backgroundSize: { lg: '40vw', md: '50vw', sm: '100%', xs: '100%' },
+                overflow: 'hidden',
+            }}
+        >
             <Container maxWidth='xxl'>
                 <Stack alignItems='center' justifyContent='center'>
                     <Card sx={{ p: 3 }} elevation={5}>
                         <Stack component='form' gap={3} textAlign='center' onSubmit={handleLogin}>
                             <CardHeader title='Ingresar' />
-                            <CardContent component={Stack} gap={1}>
+                            <CardContent component={Stack} gap={2}>
                                 <TextField
                                     {...bindEmail}
                                     variant='outlined'
@@ -43,7 +53,7 @@ export default function Login() {
                                 />
                             </CardContent>
                             <CardActions>
-                                <Button variant='outlined' sx={{ flexGrow: 0, mt: 2 }} type='submit'>
+                                <Button size='small' variant='outlined' sx={{ flexGrow: 0, mt: 2 }} type='submit'>
                                     ¡Vamos!
                                 </Button>
                             </CardActions>

@@ -4,6 +4,8 @@ import Home from '../views/home'
 import PrivateRoute from './utils'
 import Dashboard from '../views/admin/Dashboard'
 import Login from '../views/admin/Login'
+import AllGuests from '../views/admin/AllGuests'
+import AdminNav from '../components/AdminNav'
 
 export default function AppRoutes() {
     return (
@@ -23,7 +25,17 @@ export default function AppRoutes() {
                     path='/admin'
                     element={
                         <PrivateRoute>
+                            <AdminNav />
                             <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path='/confirmados'
+                    element={
+                        <PrivateRoute>
+                            <AdminNav />
+                            <AllGuests />
                         </PrivateRoute>
                     }
                 />

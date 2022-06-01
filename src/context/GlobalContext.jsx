@@ -1,8 +1,8 @@
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { onSnapshot } from 'firebase/firestore'
-import { addDoc, collection, getDocs, query } from 'firebase/firestore/lite'
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { addDoc, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
+import useBoolean from '../hooks/useBoolean'
 
 const GlobalContext = createContext()
 
@@ -13,7 +13,9 @@ const useGlobalContext = () => {
 }
 
 const GlobalProvider = ({ children }) => {
-    const [loading, setLoading] = useState(true)
+    const [loadingUser, loadingFalse] = useBoolean(true)
+    const [loadingGuests, loadingGuestsFalse, loadingGuestsTrue] = useBoolean(false)
+    const [loadingSendForm, loadingSendFormFalse, loadingSendFormTrue] = useBoolean(false)
     const [currentUser, setCurrentUser] = useState(null)
     const [guests, setGuests] = useState([])
 
@@ -24,7 +26,15 @@ const GlobalProvider = ({ children }) => {
     const logOut = () => signOut(auth)
 
     /* ADD NEW GUEST */
-    const addNewGuest = async data => await addDoc(collection(db, 'guest'), data)
+    const addNewGuest = async data => {
+        loadingSendFormTrue()
+        const docRef = await addDoc(collection(db, 'guest'), { ...data, createdAt: serverTimestamp() })
+        const addedID = doc(db, 'guest', docRef.id)
+        await updateDoc(addedID, {
+            recipeID: docRef.id,
+        })
+        loadingSendFormFalse()
+    }
 
     /* log in observer (triggers ) */
     useEffect(() => {
@@ -32,38 +42,41 @@ const GlobalProvider = ({ children }) => {
             if (user) {
                 setCurrentUser(user)
             }
-
-            setLoading(false)
+            loadingFalse()
         })
         return () => {
             unsubscribe()
-            setGuests([])
         }
-    }, [])
-
-    const isMounted = useRef()
+    }, [loadingFalse])
 
     /* GET GUESTS INFO */
     useEffect(() => {
         if (!currentUser) return
-        if (isMounted.current) return
-
-        isMounted.current = true
-        ;(async function unsub() {
-            const querySnapshot = await getDocs(collection(db, '/guest'))
+        loadingGuestsTrue()
+        const q = query(collection(db, 'guest'), where('guest', '==', 'true'))
+        const unsubscribe = onSnapshot(q, querySnapshot => {
+            const newGuestsArr = []
             querySnapshot.forEach(doc => {
-                setGuests(prevState => [...prevState, doc.data()])
+                newGuestsArr.push(doc.data())
             })
-        })()
-    }, [currentUser, isMounted])
+            setGuests(newGuestsArr)
+            loadingGuestsFalse()
+        })
+
+        return () => {
+            unsubscribe()
+        }
+    }, [currentUser, loadingGuestsFalse, loadingGuestsTrue])
 
     const value = {
         currentUser,
         login,
         logOut,
-        loading,
+        loadingUser,
         guests,
         addNewGuest,
+        loadingGuests,
+        loadingSendForm,
     }
 
     return <Provider value={value}>{children}</Provider>

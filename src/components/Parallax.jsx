@@ -6,7 +6,7 @@ import parallaxImg from '../assets/img/saintchapel.jpg'
 export default function Parallax() {
     return (
         <Box
-            height='50vh'
+            height={{ lg: '50vh', md: '50vh', sm: '40vh', xs: '30vh' }}
             width='100%'
             sx={{
                 backgroundImage: `url(${parallaxImg})`,
