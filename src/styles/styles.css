@@ -49,6 +49,26 @@ html {
     scrollbar-width: thin;
 }
 
+.overflowY::-webkit-scrollbar {
+    width: 12px;
+}
+.overflowY::-webkit-scrollbar-track {
+    background: hsl(143, 17%, 90%);
+}
+.overflowY::-webkit-scrollbar-thumb {
+    background: hsl(143, 17%, 40%);
+}
+.overflowY::-webkit-scrollbar-thumb:hover {
+    background: hsl(143, 17%, 40%);
+}
+.overflowY::-webkit-scrollbar-thumb:active {
+    background: hsl(143, 17%, 40%);
+}
+.overflowY {
+    scrollbar-color: hsl(143, 17%, 40%) hsl(143, 17%, 90%);
+    scrollbar-width: thin;
+}
+
 #root {
-    overflow: hidden;
+    overflow-x: hidden;
 }

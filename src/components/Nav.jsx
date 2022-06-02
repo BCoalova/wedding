@@ -1,6 +1,8 @@
-import { AppBar, Button, Container, Stack, Toolbar } from '@mui/material'
-import { useState } from 'react'
-
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
+import { AppBar, Button, Container, IconButton, Stack, Toolbar } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
+import { useGlobalContext } from '../context/GlobalContext'
 const pages = [
     // { name: 'Nuestra Boda', id: 'nuestraBoda' },
     { name: 'Inicio', id: 'inicio' },
@@ -8,26 +10,9 @@ const pages = [
     { name: 'RSVP', id: 'rsvp' },
     { name: 'Regalos', id: 'regalos' },
 ]
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-function Nav(props) {
-    const [anchorElNav, setAnchorElNav] = useState(null)
-    const [anchorElUser, setAnchorElUser] = useState(null)
-
-    const handleOpenNavMenu = event => {
-        setAnchorElNav(event.currentTarget)
-    }
-    const handleOpenUserMenu = event => {
-        setAnchorElUser(event.currentTarget)
-    }
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null)
-    }
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null)
-    }
+function Nav() {
+    const { currentUser } = useGlobalContext()
 
     return (
         <AppBar
@@ -51,14 +36,20 @@ function Nav(props) {
                         {pages.map(page => (
                             <Button
                                 key={page.id}
-                                component='a'
-                                href={`#${page.id}`}
-                                onClick={handleCloseNavMenu}
+                                component={HashLink}
+                                to={`#${page.id}`}
+                                smooth
+                                activeClassName='selected'
                                 sx={{ my: 2, display: 'block', color: 'inherit', px: { sm: 3, xs: 1 } }}
                             >
                                 {page.name}
                             </Button>
                         ))}
+                        {currentUser && (
+                            <IconButton component={Link} to='/admin'>
+                                <AdminPanelSettingsIcon color='primary' />
+                            </IconButton>
+                        )}
                     </Stack>
                 </Toolbar>
             </Container>

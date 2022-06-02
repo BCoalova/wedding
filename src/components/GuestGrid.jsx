@@ -1,19 +1,46 @@
-import { Button } from '@mui/material'
-import { AgGridReact } from 'ag-grid-react'
-import { useCallback, useMemo, useRef, useState } from 'react'
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline'
-import copyToClipboard from '../helpers/copyToClipboard'
+import DraftsIcon from '@mui/icons-material/Drafts'
+import EmailIcon from '@mui/icons-material/Email'
+import { Button, IconButton, Tooltip } from '@mui/material'
+import { AgGridReact } from 'ag-grid-react'
+import { useCallback, useMemo, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
+
 export default function GuestGrid({ guests }) {
     const gridRef = useRef()
 
-    const [columnDefs] = useState([
-        { field: 'name', headerName: 'Nombre', sortable: true, width: 100 },
-        { field: 'lastName', headerName: 'Apellido', sortable: true, width: 100 },
-        { field: 'age', headerName: 'Edad', sortable: true, width: 200 },
-        { field: 'phone', headerName: 'Teléfono', sortable: true, width: 100 },
-        { field: 'email', headerName: 'Email', sortable: true, width: 150 },
-        { field: 'message', headerName: 'Mensaje', sortable: true },
-    ])
+    const columnDefs = useMemo(() => {
+        return [
+            {
+                field: 'open',
+                headerName: 'Leído',
+                sortable: true,
+                maxWidth: 100,
+                resizable: false,
+                cellRenderer: values => (
+                    <Tooltip title='Ver en formularios' placement='right' arrow>
+                        <IconButton component={Link} to='/admin' state={{ guestID: values.data.guestID }}>
+                            {!values.value ? <EmailIcon color='primary' /> : <DraftsIcon />}
+                        </IconButton>
+                    </Tooltip>
+                ),
+            },
+            {
+                field: 'createdAt',
+                headerName: 'Creado',
+                sortable: true,
+                width: 130,
+                cellRenderer: values => convertTimeStampToDate(values.value) + ' hs.',
+            },
+            { field: 'name', headerName: 'Nombre', sortable: true, width: 130 },
+            { field: 'lastName', headerName: 'Apellido', sortable: true, width: 150 },
+            { field: 'age', headerName: 'Edad', sortable: true, width: 200 },
+            { field: 'phone', headerName: 'Teléfono', sortable: true, width: 100 },
+            { field: 'email', headerName: 'Email', sortable: true, width: 150 },
+            { field: 'message', headerName: 'Mensaje', sortable: true },
+        ]
+    }, [])
 
     const defaultColDef = useMemo(() => {
         return {
@@ -43,8 +70,9 @@ export default function GuestGrid({ guests }) {
                     onFirstDataRendered={onDataFetched}
                     pagination={true}
                     paginationAutoPageSize={true}
-                    enableCellTextSelection={true}
-                    ensureDomOrder={true}
+                    // rowSelection='multiple'
+                    // enableCellTextSelection={true}
+                    // ensureDomOrder={true}
                     // onCellClicked={params => copyToClipboard(params.value)}
                 ></AgGridReact>
             </div>

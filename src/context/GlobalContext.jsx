@@ -31,9 +31,22 @@ const GlobalProvider = ({ children }) => {
         const docRef = await addDoc(collection(db, 'guest'), { ...data, createdAt: serverTimestamp() })
         const addedID = doc(db, 'guest', docRef.id)
         await updateDoc(addedID, {
-            recipeID: docRef.id,
+            guestID: docRef.id,
         })
         loadingSendFormFalse()
+    }
+
+    const markAsRead = async id => {
+        const docToUpdate = doc(db, 'guest', id)
+        await updateDoc(docToUpdate, {
+            open: true,
+        })
+    }
+    const markAsUnread = async id => {
+        const docToUpdate = doc(db, 'guest', id)
+        await updateDoc(docToUpdate, {
+            open: false,
+        })
     }
 
     /* log in observer (triggers ) */
@@ -77,6 +90,8 @@ const GlobalProvider = ({ children }) => {
         addNewGuest,
         loadingGuests,
         loadingSendForm,
+        markAsRead,
+        markAsUnread,
     }
 
     return <Provider value={value}>{children}</Provider>

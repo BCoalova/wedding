@@ -5,7 +5,7 @@ import GuestList from '../../components/GuestList'
 import { useGlobalContext } from '../../context/GlobalContext'
 
 export default function Dashboard() {
-    const { guests, loadingGuests } = useGlobalContext()
+    const { guests, loadingGuests, markAsRead, markAsUnread } = useGlobalContext()
 
     return (
         <FullHeightCenter
@@ -16,13 +16,20 @@ export default function Dashboard() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'top left',
                 backgroundSize: { lg: '40vw', md: '50vw', sm: '100%', xs: '100%' },
-                overflow: 'hidden',
                 pt: '64px',
+                overflowY: 'hidden',
             }}
         >
             <Container maxWidth='xxl' sx={{ minHeight: 'calc(100vh - 64px)' }}>
-                <Stack gap={10} justifyContent='space-between' sx={{ height: 'calc(100vh - 64px)', py: 5 }}>
-                    {!guests.lenght && <GuestList guests={guests} loadingGuests={loadingGuests} />}
+                <Stack gap={10} justifyContent='space-between'>
+                    {!guests.lenght && (
+                        <GuestList
+                            guests={guests}
+                            loadingGuests={loadingGuests}
+                            markAsRead={markAsRead}
+                            markAsUnread={markAsUnread}
+                        />
+                    )}
                 </Stack>
             </Container>
         </FullHeightCenter>

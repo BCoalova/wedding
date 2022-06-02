@@ -1,7 +1,9 @@
-import { AppBar, Button, Stack, Toolbar } from '@mui/material'
+import { AppBar, Button, IconButton, Stack, Toolbar } from '@mui/material'
 import { Container } from '@mui/system'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, NavLink } from 'react-router-dom'
 import { useGlobalContext } from '../context/GlobalContext'
+import LogoutIcon from '@mui/icons-material/Logout'
+import HomeIcon from '@mui/icons-material/Home'
 
 export default function AdminNav() {
     const { logOut } = useGlobalContext()
@@ -18,13 +20,18 @@ export default function AdminNav() {
             <Container maxWidth='xxl'>
                 <Toolbar disableGutters>
                     <Stack width='100%' direction='row' justifyContent='center'>
-                        <Button component={Link} to='/admin'>
+                        <IconButton component={Link} to='/'>
+                            <HomeIcon color='primary' />
+                        </IconButton>
+                        <Button component={NavLink} to='/admin'>
                             Formularios
                         </Button>
-                        <Button component={Link} to='/confirmados'>
+                        <Button component={NavLink} to='/confirmados'>
                             confirmados
                         </Button>
-                        <Button onClick={handleLogOut}>salir</Button>
+                        <IconButton onClick={handleLogOut}>
+                            <LogoutIcon color='primary' />
+                        </IconButton>
                     </Stack>
                 </Toolbar>
             </Container>

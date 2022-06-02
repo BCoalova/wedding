@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from '@mui/material'
-import { WEDDING_DATE2 } from '../constants/index'
 
 const countDownText = ['En ', ' meses, ', ' días', ' y ', ' : ']
 
@@ -91,8 +90,8 @@ const Option2 = ({ intervaleD }) => {
 export default function CountDown({ intervaleD }) {
     return (
         <>
-            <Option1 intervaleD={intervaleD} />
-            {/* <Option2 intervaleD={intervaleD} /> */}
+            {/* <Option1 intervaleD={intervaleD} /> */}
+            <Option2 intervaleD={intervaleD} />
         </>
     )
 }

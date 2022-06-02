@@ -1,10 +1,12 @@
-import { Button, Card, CardActions, CardContent, CardHeader, Stack, TextField } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
+import LoginIcon from '@mui/icons-material/Login'
+import { Card, CardActions, CardContent, CardHeader, IconButton, Stack, TextField, Tooltip } from '@mui/material'
 import { Container } from '@mui/system'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import { useGlobalContext } from '../../context/GlobalContext'
 import useInput from '../../hooks/useInput'
-import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
 
 export default function Login() {
     const { login } = useGlobalContext()
@@ -52,11 +54,18 @@ export default function Login() {
                                     autoComplete='current-password'
                                 />
                             </CardContent>
-                            <CardActions>
-                                <Button size='small' variant='outlined' sx={{ flexGrow: 0, mt: 2 }} type='submit'>
-                                    ¡Vamos!
-                                </Button>
-                            </CardActions>
+                            <Stack component={CardActions} justifyContent='space-between' alignItems='center' direction='row'>
+                                <Tooltip title='Volver al inicio' arrow placement='right'>
+                                    <IconButton size='small' variant='outlined' component={Link} to='/'>
+                                        <HomeIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title='Ingresar' arrow placement='left'>
+                                    <IconButton size='small' variant='outlined' /* sx={{ flexGrow: 0, mt: 2 }} */ type='submit'>
+                                        <LoginIcon color='primary' />
+                                    </IconButton>
+                                </Tooltip>
+                            </Stack>
                         </Stack>
                     </Card>
                 </Stack>

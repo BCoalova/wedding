@@ -36,6 +36,9 @@ const theme = createTheme({
                     fontSize: 16,
                     'font-weight': '500',
                     paddingInline: 24,
+                    '&.active': {
+                        backgroundColor: 'rgba(186, 146, 93, 0.08)',
+                    },
                 },
             },
         },

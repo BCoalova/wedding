@@ -1,4 +1,4 @@
-import { CircularProgress, Container, Paper, Typography } from '@mui/material'
+import { Card, CardContent, CardHeader, CircularProgress, Container } from '@mui/material'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-material.css'
 import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
@@ -23,25 +23,28 @@ export default function AllGuests() {
             }}
         >
             <Container maxWidth='xxl'>
-                <Paper sx={{ py: 2, px: 4 }}>
-                    <Typography variant='h5' mb={2}>
-                        Lista completa de confirmados
-                    </Typography>
-                    {loadingGuests && <CircularProgress color='primary' />}
-                    {!loadingGuests && (
-                        <GuestGrid
-                            guests={guests.reduce((cleanList, guest) => {
-                                const newGuestArr = guest.comensales.map(comensal => ({
-                                    ...comensal,
-                                    email: guest.email,
-                                    phone: guest.phone,
-                                    message: guest.message,
-                                }))
-                                return [...cleanList, ...newGuestArr]
-                            }, [])}
-                        />
-                    )}
-                </Paper>
+                <Card sx={{ py: 2, px: 4 }}>
+                    <CardHeader title='Lista completa de confirmados' />
+                    <CardContent>
+                        {loadingGuests && <CircularProgress color='primary' />}
+                        {!loadingGuests && (
+                            <GuestGrid
+                                guests={guests.reduce((cleanList, guest) => {
+                                    const newGuestArr = guest.comensales.map(comensal => ({
+                                        ...comensal,
+                                        email: guest.email,
+                                        phone: guest.phone,
+                                        message: guest.message,
+                                        open: guest.open,
+                                        guestID: guest.guestID,
+                                        createdAt: guest.createdAt,
+                                    }))
+                                    return [...cleanList, ...newGuestArr]
+                                }, [])}
+                            />
+                        )}
+                    </CardContent>
+                </Card>
             </Container>
         </FullHeightCenter>
     )
