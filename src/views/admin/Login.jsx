@@ -61,7 +61,7 @@ export default function Login() {
                                     </IconButton>
                                 </Tooltip>
                                 <Tooltip title='Ingresar' arrow placement='left'>
-                                    <IconButton size='small' variant='outlined' /* sx={{ flexGrow: 0, mt: 2 }} */ type='submit'>
+                                    <IconButton size='small' variant='outlined' type='submit'>
                                         <LoginIcon color='primary' />
                                     </IconButton>
                                 </Tooltip>

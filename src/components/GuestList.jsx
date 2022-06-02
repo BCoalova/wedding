@@ -13,11 +13,8 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
 
     useEffect(() => {
         if (!state) return
-
         const findGuest = guests.find(guest => guest.guestID === state.guestID)
-
         if (!findGuest) return
-
         setSelectedGuest(findGuest)
 
         return () => setSelectedGuest(null)
@@ -34,9 +31,7 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
 
     const handleMarkAsRead = async (id, isOpen) => {
         setSelectedGuest(prev => ({ ...prev, open: !isOpen }))
-
         if (isOpen) return await markAsUnread(id)
-
         if (!isOpen) return await markAsRead(id)
     }
 
