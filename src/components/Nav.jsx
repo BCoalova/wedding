@@ -14,13 +14,15 @@ const pages = [
 function Nav() {
     const { currentUser } = useGlobalContext()
 
+    console.log(currentUser)
+
     return (
         <AppBar
             position='fixed'
             sx={{
                 width: '100vw',
-                top: { lg: 0, md: 0, sm: 0, xs: 'unset' },
-                bottom: { lg: 'unset', md: 'unset', sm: 'unset', xs: 0 },
+                // top: { lg: 0, md: 0, sm: 0, xs: 'unset' },
+                // bottom: { lg: 'unset', md: 'unset', sm: 'unset', xs: 0 },
                 left: 0,
                 right: 0,
             }}
@@ -39,8 +41,8 @@ function Nav() {
                                 component={HashLink}
                                 to={`#${page.id}`}
                                 smooth
-                                activeClassName='selected'
-                                sx={{ my: 2, display: 'block', color: 'inherit', px: { sm: 3, xs: 1 } }}
+                                sx={{ my: 2, px: { sm: 3, xs: 1 } }}
+                                size='small'
                             >
                                 {page.name}
                             </Button>

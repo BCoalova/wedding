@@ -19,11 +19,19 @@ import {
     Tooltip,
     Typography,
 } from '@mui/material'
+import React from 'react'
 import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
 
-export default function RecivedFormsDetail({ selectedGuest, handleMarkAsRead, handleUnselectGuest }) {
+const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
+    const { selectedGuest, handleMarkAsRead, handleUnselectGuest } = props
+
     return (
-        <Card className='overflowY' sx={{ px: 4, py: 4, my: 2, flexGrow: 1, height: `calc(100vh - 96px)`, overflowY: 'auto' }}>
+        <Card
+            ref={ref}
+            {...props}
+            className='overflowY'
+            sx={{ px: 4, py: 4, my: 2, flexGrow: 1, height: `calc(100vh - 96px)`, overflowY: 'auto', zIndex: 1 }}
+        >
             <CardHeader
                 action={
                     <Stack direction='row' gap={1}>
@@ -47,16 +55,18 @@ export default function RecivedFormsDetail({ selectedGuest, handleMarkAsRead, ha
                         </Tooltip>
                     </Stack>
                 }
-                title={`Creado el: ${convertTimeStampToDate(selectedGuest.createdAt)} hs.`}
+                title={'Detalles:'}
             />
+
             <CardContent>
                 <Stack gap={2}>
-                    <Stack>
+                    <Stack gap={1}>
                         <Stack direction='row' gap={1} alignItems='center'>
                             <Typography fontWeight={600}> De:</Typography>
                             <Typography>{selectedGuest.email}</Typography>
                             <Tooltip title='Enviar correo' arrow placement='right'>
                                 <IconButton
+                                    size='small'
                                     color='primary'
                                     component={Link}
                                     href={`mailto:${selectedGuest.email}`}
@@ -67,16 +77,28 @@ export default function RecivedFormsDetail({ selectedGuest, handleMarkAsRead, ha
                             </Tooltip>
                         </Stack>
                         <Stack direction='row' gap={1} alignItems='center'>
+                            <Typography variant='caption' /* fontStyle='italic' fontSize='1rem' */>Creado el:</Typography>
+                            <Typography variant='caption'>{convertTimeStampToDate(selectedGuest.createdAt)} hs.</Typography>
+                        </Stack>
+                        <Stack direction='row' gap={1} alignItems='center'>
                             <Typography fontWeight={600}>Teléfono:</Typography>
                             <Typography>{selectedGuest.phone}</Typography>
                             <Tooltip title='Llamar' arrow placement='right'>
-                                <IconButton color='primary' component={Link} href={`tel:${selectedGuest.phone}`} underline='none'>
+                                <IconButton
+                                    size='small'
+                                    color='primary'
+                                    component={Link}
+                                    href={`tel:${selectedGuest.phone}`}
+                                    underline='none'
+                                >
                                     <PhoneIcon />
                                 </IconButton>
                             </Tooltip>
                         </Stack>
-                        <Typography fontWeight={600}>Mensaje: </Typography>
-                        <Typography>{selectedGuest.message}</Typography>
+                        <Stack direction='row' gap={1} alignItems='center'>
+                            <Typography fontWeight={600}>Mensaje: </Typography>
+                            <Typography>{selectedGuest.message}</Typography>
+                        </Stack>
                     </Stack>
                     <Divider flexItem />
                     <Stack>
@@ -103,4 +125,6 @@ export default function RecivedFormsDetail({ selectedGuest, handleMarkAsRead, ha
             </CardContent>
         </Card>
     )
-}
+})
+
+export default RecivedFormsDetail

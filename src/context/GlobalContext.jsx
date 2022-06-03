@@ -23,7 +23,7 @@ const GlobalProvider = ({ children }) => {
     const login = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
     /* Log out */
-    const logOut = () => signOut(auth)
+    const logOut = async () => await signOut(auth)
 
     /* ADD NEW GUEST */
     const addNewGuest = async data => {
@@ -54,6 +54,9 @@ const GlobalProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
                 setCurrentUser(user)
+            } else {
+                setCurrentUser(null)
+                setGuests([])
             }
             loadingFalse()
         })

@@ -8,7 +8,7 @@ function HeroCTA() {
     const [intervaleD] = useBackCount(WEDDING_DATE2)
 
     return (
-        <Stack alignItems='center' sx={{ textAlign: 'center' }} width={450}>
+        <Stack alignItems='center' sx={{ textAlign: 'center' }} width={450} gap={{ lg: 6, md: 6, sm: 4, xs: 2 }}>
             <Box component='img' src={maruYBoris} maxWidth={350} width='100%' mb={6} />
             <Stack width='100%' gap={2} alignItems='center' flexGrow={1}>
                 {intervaleD && <CountDown intervaleD={intervaleD} />}

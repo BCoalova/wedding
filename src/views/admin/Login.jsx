@@ -11,8 +11,8 @@ import useInput from '../../hooks/useInput'
 export default function Login() {
     const { login } = useGlobalContext()
     let navigate = useNavigate()
-    const [email, bindEmail /* , resetEmail, clearEmail */] = useInput('maruyboris.19.11.22@gmail.com')
-    const [password, bindPassword /* , resetPassword, clearPassword */] = useInput('Maru_19.11.2022_ADMIN')
+    const [email, bindEmail /* , resetEmail, clearEmail */] = useInput('')
+    const [password, bindPassword /* , resetPassword, clearPassword */] = useInput('')
 
     const handleLogin = async e => {
         e.preventDefault()

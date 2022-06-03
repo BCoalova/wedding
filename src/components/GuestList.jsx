@@ -1,11 +1,11 @@
-import { Stack, useMediaQuery } from '@mui/material'
+import { Slide, Stack, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import RecivedForms from './RecivedForms'
 import RecivedFormsDetail from './RecivedFormsDetail'
 
 export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnread }) {
-    const matches = useMediaQuery('(max-width:960px)')
+    const matches = useMediaQuery('(max-width:1132px)')
 
     const [selectedGuest, setSelectedGuest] = useState(null)
 
@@ -47,11 +47,18 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
                 />
             )}
             {selectedGuest && (
-                <RecivedFormsDetail
-                    selectedGuest={selectedGuest}
-                    handleMarkAsRead={handleMarkAsRead}
-                    handleUnselectGuest={handleUnselectGuest}
-                />
+                <Slide
+                    direction='right'
+                    in={!!selectedGuest}
+                    mountOnEnter
+                    unmountOnExit
+                    easing={{
+                        enter: 'cubic-bezier(.33,.73,.13,1.24)',
+                        exit: 'linear',
+                    }}
+                >
+                    <RecivedFormsDetail props={{ selectedGuest, handleMarkAsRead, handleUnselectGuest }} />
+                </Slide>
             )}
         </Stack>
     )

@@ -14,11 +14,11 @@ import {
 } from '@mui/material'
 
 export default function RecivedForms({ loadingGuests, guests, handleSelectGuest, selectedGuest }) {
-    const matches = useMediaQuery('(max-width:960px)')
+    const matches = useMediaQuery('(max-width:1132px)')
     return (
         <Card
             className='overflowY'
-            sx={{ px: 4, py: 4, my: 2, flexGrow: matches ? 1 : 0, height: `calc(100vh - 96px)`, overflowY: 'auto' }}
+            sx={{ px: 4, py: 4, my: 2, flexGrow: matches ? 1 : 0, height: `calc(100vh - 96px)`, overflowY: 'auto', zIndex: 10 }}
         >
             <CardHeader title='Formularios recibidos' />
             <CardContent>

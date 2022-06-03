@@ -51,6 +51,12 @@ const theme = createTheme({
             },
         },
     },
+    transitions: {
+        duration: {
+            enteringScreen: 450,
+            leavingScreen: 250,
+        },
+    },
 })
 
 export default theme
