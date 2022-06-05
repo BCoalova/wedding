@@ -34,7 +34,11 @@ export default function AllGuests() {
                 headerName: 'Creado',
                 sortable: true,
                 width: 130,
-                cellRenderer: values => values.value + ' hs.',
+
+                cellRenderer: values => {
+                    console.log(values)
+                    return values.value + ' hs.'
+                },
             },
             { field: 'name', headerName: 'Nombre', sortable: true, width: 130 },
             { field: 'lastName', headerName: 'Apellido', sortable: true, width: 150 },
@@ -74,6 +78,7 @@ export default function AllGuests() {
                                         open: guest.open,
                                         guestID: guest.guestID,
                                         createdAt: guest.createdAt,
+                                        formatedDate: guest.formatedDate,
                                     }))
                                     return [...cleanList, ...newGuestArr]
                                 }, [])}
