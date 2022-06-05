@@ -56,7 +56,7 @@ export default function Login() {
                             </CardContent>
                             <Stack component={CardActions} justifyContent='space-between' alignItems='center' direction='row'>
                                 <Tooltip title='Volver al inicio' arrow placement='right'>
-                                    <IconButton size='small' variant='outlined' component={Link} to='/'>
+                                    <IconButton size='small' variant='outlined' component={Link} to='/' type='button'>
                                         <HomeIcon />
                                     </IconButton>
                                 </Tooltip>
