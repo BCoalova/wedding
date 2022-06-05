@@ -1,9 +1,8 @@
-import { Card, CardContent, CardHeader, CircularProgress, Stack } from '@mui/material'
-import { useMemo } from 'react'
-import FullHeightCenter from '../../components/FullHeightCenter'
-import convertTimeStampToDate from '../../helpers/convertTimeStampToDate'
-import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
+import { Card, CardContent, CardHeader, CircularProgress } from '@mui/material'
 import { Container } from '@mui/system'
+import { useMemo } from 'react'
+import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture.svg'
+import FullHeightCenter from '../../components/FullHeightCenter'
 import GuestGrid from '../../components/GuestGrid'
 import { useGlobalContext } from '../../context/GlobalContext'
 
@@ -13,11 +12,11 @@ export default function TransportList() {
     const columnDefs = useMemo(() => {
         return [
             {
-                field: 'createdAt',
+                field: 'formatedDate',
                 headerName: 'Creado',
                 sortable: true,
                 width: 130,
-                cellRenderer: values => convertTimeStampToDate(values.value) + ' hs.',
+                cellRenderer: values => values.value + ' hs.',
             },
             { field: 'completeName', headerName: 'Nombre Completo', sortable: true, width: 130 },
             { field: 'email', headerName: 'Correo electrónico', sortable: true, width: 200 },
@@ -40,7 +39,7 @@ export default function TransportList() {
         >
             <Container maxWidth='xxl'>
                 <Card sx={{ py: 2, px: 4 }}>
-                    <CardHeader title='Lista completa de confirmados' />
+                    <CardHeader title='Interesados en transporte' />
                     <CardContent>
                         {loadingTransportList && <CircularProgress color='primary' />}
                         {!loadingTransportList && <GuestGrid guests={transportList} columns={columnDefs} />}

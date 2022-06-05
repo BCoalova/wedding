@@ -7,6 +7,7 @@ export default function usePaxCount(initialNum = 0, max, min) {
         value,
         onChange: e => {
             const targetValue = e.target.value
+            if (targetValue === '0') return
             const regex = new RegExp('^[0-9]+$')
 
             if (!regex.test(targetValue)) return

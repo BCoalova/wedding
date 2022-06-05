@@ -2,16 +2,19 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import SendIcon from '@mui/icons-material/Send'
 import { LoadingButton } from '@mui/lab'
-import { Box, IconButton, Stack, TextField, Typography } from '@mui/material'
+import { Alert, Box, IconButton, Stack, TextField, Typography } from '@mui/material'
 import useInput from '../hooks/useInput'
 import usePaxCount from '../hooks/usePaxCount'
 import { useGlobalContext } from '../context/GlobalContext'
+import useBoolean from '../hooks/useBoolean'
 
 export default function TransportationForm() {
     const { addNewTransportGuest, loadingSendTransport } = useGlobalContext()
-    const [completeName, bindCompleteName, resetCompleteName, clearCompleteName] = useInput('')
-    const [email, bindEmail, resetEmail, clearEmail] = useInput('')
+    const [completeName, bindCompleteName, resetCompleteName /* , clearCompleteName */] = useInput('')
+    const [email, bindEmail, resetEmail /* , clearEmail */] = useInput('')
     const [paxCount, bindPaxCount, add, sub, reset] = usePaxCount(1, false, 1)
+
+    const [successSend, turnFalse, turnTrue /*  resetSuccessSend, toggleSuccessSend */] = useBoolean(false)
 
     const handleSubitTransportation = async e => {
         e.preventDefault()
@@ -21,6 +24,10 @@ export default function TransportationForm() {
             paxCount,
         }
         await addNewTransportGuest(data)
+        resetCompleteName()
+        resetEmail()
+        reset()
+        turnTrue()
     }
 
     return (
@@ -63,6 +70,11 @@ export default function TransportationForm() {
                         Enviar
                     </LoadingButton>
                 </Box>
+                {successSend && (
+                    <Alert severity='success' onClose={turnFalse}>
+                        Gracias, nos comunicaremos con vos en la brevedad
+                    </Alert>
+                )}
             </Stack>
         </Box>
     )

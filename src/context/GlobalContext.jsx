@@ -2,6 +2,7 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebas
 import { addDoc, arrayUnion, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
+import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
 import useBoolean from '../hooks/useBoolean'
 
 const GlobalContext = createContext()
@@ -98,7 +99,7 @@ const GlobalProvider = ({ children }) => {
         const unsubscribe = onSnapshot(q, querySnapshot => {
             const newGuestsArr = []
             querySnapshot.forEach(doc => {
-                newGuestsArr.push(doc.data())
+                newGuestsArr.push({ ...doc.data(), formatedDate: convertTimeStampToDate(doc.data().createdAt) })
             })
             setGuests(newGuestsArr)
             loadingGuestsFalse()
@@ -109,6 +110,7 @@ const GlobalProvider = ({ children }) => {
         }
     }, [currentUser, loadingGuestsFalse, loadingGuestsTrue])
 
+    /* GET TRANSPORT LIST INFO */
     useEffect(() => {
         if (!currentUser) return
         loadingTransportListTrue()
@@ -116,7 +118,7 @@ const GlobalProvider = ({ children }) => {
         const unsubscribe = onSnapshot(q, querySnapshot => {
             const newTransportListsArr = []
             querySnapshot.forEach(doc => {
-                newTransportListsArr.push(doc.data())
+                newTransportListsArr.push({ ...doc.data(), formatedDate: convertTimeStampToDate(doc.data().createdAt) })
             })
             setTransportList(newTransportListsArr)
             loadingTransportListFalse()

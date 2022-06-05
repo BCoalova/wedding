@@ -3,6 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import SendIcon from '@mui/icons-material/Send'
 import { LoadingButton } from '@mui/lab'
 import {
+    Alert,
     Box,
     Button,
     Divider,
@@ -19,6 +20,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { useGlobalContext } from '../context/GlobalContext'
+import useBoolean from '../hooks/useBoolean'
 import useInput from '../hooks/useInput'
 
 export default function RSPV() {
@@ -27,6 +29,8 @@ export default function RSPV() {
     const [email, bindEmail, resetEmail /*, clearEmail */] = useInput('')
     const [phone, bindPhone, resetPhone /*, clearPhone */] = useInput('')
     const [message, bindMessage, resetMessage /*, clearMessage */] = useInput('')
+
+    const [successSend, turnFalse, turnTrue /*  resetSuccessSend, toggleSuccessSend */] = useBoolean(false)
 
     const handleNewComensal = id => {
         const lastIndex = comensales.length - 1
@@ -72,6 +76,7 @@ export default function RSPV() {
         resetEmail()
         resetPhone()
         resetMessage()
+        turnTrue()
     }
 
     return (
@@ -175,6 +180,11 @@ export default function RSPV() {
                         Enviar
                     </LoadingButton>
                 </Box>
+                {successSend && (
+                    <Alert severity='success' onClose={turnFalse}>
+                        Gracias, nos comunicaremos con vos en la brevedad
+                    </Alert>
+                )}
             </Stack>
         </Box>
     )
