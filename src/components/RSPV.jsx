@@ -146,6 +146,7 @@ export default function RSPV() {
                         onClick={() => handleNewComensal()}
                         sx={{ alignSelf: 'start' }}
                         value={null}
+                        type='button'
                     >
                         <AddCircleIcon color='secondary' />
                     </IconButton>
