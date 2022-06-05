@@ -34,55 +34,57 @@ const Option1 = ({ intervaleD }) => {
 const Option2 = ({ intervaleD }) => {
     return (
         <>
-            <Typography variant='h5' fontWeight={700}>
+            {/* <Typography variant='h5' fontWeight={700}>
                 Nos vemos en
-            </Typography>
-            <Stack
-                width='100%'
-                direction='row'
-                gap={1}
-                justifyContent='space-between'
-                flexGrow={1}
-                sx={{ color: 'primary.main', borderTop: '1px solid', borderBottom: '1px solid', py: 1 }}
-            >
-                {intervaleD.months > 0 && (
+            </Typography> */}
+            <Stack gap={3}>
+                <Typography variant='h3' /* color='primary' */ fontSize={30}>
+                    Sábado 19 de noviembre 2022
+                </Typography>
+                <Stack
+                    width='100%'
+                    direction='row'
+                    gap={1}
+                    justifyContent='space-between'
+                    flexGrow={1}
+                    sx={{ color: 'primary.main', borderTop: '1px solid', borderBottom: '1px solid', py: 1 }}
+                >
+                    {intervaleD.months > 0 && (
+                        <Stack minWidth={60}>
+                            <Typography fontWeight={700} fontFamily='Gentium Plus' lineHeight={1} color='primary' fontSize={42}>
+                                {intervaleD.months < 10 ? '0' + intervaleD.months : intervaleD.months}
+                            </Typography>
+                            <Typography fontSize={16}>MESES</Typography>
+                        </Stack>
+                    )}
+                    {intervaleD.days > 0 && (
+                        <Stack minWidth={60}>
+                            <Typography fontWeight={700} fontFamily='Gentium Plus' lineHeight={1} color='primary' fontSize={42}>
+                                {intervaleD.days < 10 ? '0' + intervaleD.days : intervaleD.days}
+                            </Typography>
+                            <Typography fontSize={16}>DÍAS</Typography>
+                        </Stack>
+                    )}
                     <Stack minWidth={60}>
-                        <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
-                            {intervaleD.months < 10 ? '0' + intervaleD.months : intervaleD.months}
+                        <Typography fontWeight={700} fontFamily='Gentium Plus' lineHeight={1} color='primary' fontSize={42}>
+                            {intervaleD.hours < 10 ? '0' + intervaleD.hours : intervaleD.hours}
                         </Typography>
-                        <Typography fontSize={16}>MESES</Typography>
+                        <Typography fontSize={16}>HORAS</Typography>
                     </Stack>
-                )}
-                {intervaleD.days > 0 && (
                     <Stack minWidth={60}>
-                        <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
-                            {intervaleD.days < 10 ? '0' + intervaleD.days : intervaleD.days}
+                        <Typography fontWeight={700} fontFamily='Gentium Plus' lineHeight={1} color='primary' fontSize={42}>
+                            {intervaleD.minutes < 10 ? '0' + intervaleD.minutes : intervaleD.minutes}
                         </Typography>
-                        <Typography fontSize={16}>DÍAS</Typography>
+                        <Typography fontSize={16}>MIN</Typography>
                     </Stack>
-                )}
-                <Stack minWidth={60}>
-                    <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
-                        {intervaleD.hours < 10 ? '0' + intervaleD.hours : intervaleD.hours}
-                    </Typography>
-                    <Typography fontSize={16}>HORAS</Typography>
-                </Stack>
-                <Stack minWidth={60}>
-                    <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
-                        {intervaleD.minutes < 10 ? '0' + intervaleD.minutes : intervaleD.minutes}
-                    </Typography>
-                    <Typography fontSize={16}>MIN</Typography>
-                </Stack>
-                <Stack minWidth={60}>
-                    <Typography fontWeight={900} lineHeight={1} color='primary' fontSize={40}>
-                        {intervaleD.seconds < 10 ? '0' + intervaleD.seconds : intervaleD.seconds}
-                    </Typography>
-                    <Typography fontSize={16}>SEG</Typography>
+                    <Stack minWidth={60}>
+                        <Typography fontWeight={700} fontFamily='Gentium Plus' lineHeight={1} color='primary' fontSize={42}>
+                            {intervaleD.seconds < 10 ? '0' + intervaleD.seconds : intervaleD.seconds}
+                        </Typography>
+                        <Typography fontSize={16}>SEG</Typography>
+                    </Stack>
                 </Stack>
             </Stack>
-            <Typography variant='h2' fontSize={40}>
-                Sábado 19 de noviembre 2022
-            </Typography>{' '}
         </>
     )
 }

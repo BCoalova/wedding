@@ -53,7 +53,7 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
                     mountOnEnter
                     unmountOnExit
                     easing={{
-                        enter: 'cubic-bezier(.33,.73,.13,1.24)',
+                        enter: 'cubic-bezier(.69,.05,.2,1.08)',
                         exit: 'linear',
                     }}
                 >

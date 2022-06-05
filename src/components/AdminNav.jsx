@@ -28,6 +28,9 @@ export default function AdminNav() {
                         <Button size='small' component={NavLink} to='/confirmados'>
                             confirmados
                         </Button>
+                        <Button size='small' component={NavLink} to='/transporte'>
+                            transporte
+                        </Button>
                         <IconButton size='small' onClick={handleLogOut}>
                             <LogoutIcon color='primary' />
                         </IconButton>

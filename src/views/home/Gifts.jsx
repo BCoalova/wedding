@@ -1,12 +1,14 @@
-import { Box, Container, Link, Stack, Tooltip, Typography } from '@mui/material'
+import { Box, Container, Link, Paper, Stack, Tooltip, Typography } from '@mui/material'
 import FullHeightCenter from '../../components/FullHeightCenter'
 import giftsIcon from '../../assets/img/sorpresa.svg'
 import tirita1 from '../../assets/img/tirita-1.jpg'
 import tirita2 from '../../assets/img/tirita-2.jpg'
 import tirita3 from '../../assets/img/tirita-3.jpg'
-import topRightTexture from '../../assets/bg_corners/top-rigth-dark-green-texture.svg'
+import topLeftTexture from '../../assets/bg_corners/top-left-light-green-texture.svg'
 import useBoolean from '../../hooks/useBoolean'
 import copyToClipboard from '../../helpers/copyToClipboard'
+
+const tirasArr = [tirita1, tirita2, tirita3]
 
 function Gifts() {
     const [isOpenCBU, closeCBU, openCBU] = useBoolean(false)
@@ -27,14 +29,14 @@ function Gifts() {
         <FullHeightCenter
             id='regalos'
             sx={{
-                backgroundImage: `url(${topRightTexture})`,
+                backgroundImage: `url(${topLeftTexture})`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'top right',
+                backgroundPosition: 'top left',
                 backgroundSize: { lg: '40vw', md: '50vw', sm: '100%', xs: '100%' },
                 textAlign: 'center',
                 pt: { lg: 15, md: 10, sm: 10, xs: 5 },
                 pb: { lg: 15, md: 10, sm: 10, xs: 10 },
-                marginTop: '-3px',
+                marginTop: '-1px',
             }}
         >
             <Container maxWidth='xxl'>
@@ -78,28 +80,24 @@ function Gifts() {
                                 </Typography>
                             </Stack>
                         </Stack>
-                        <Stack
-                            direction='row'
-                            alignItems='center'
-                            justifyContent='center'
-                            sx={{ width: '100%', alignSelf: 'stretch' }}
-                        >
-                            <Box
-                                component='img'
-                                src={tirita1}
-                                sx={{ maxWidth: 350, width: '33%', border: '1px solid #333333' }}
-                            />
-                            <Box
-                                component='img'
-                                src={tirita2}
-                                sx={{ maxWidth: 350, width: '33%', border: '1px solid #333333' }}
-                            />
-                            <Box
-                                component='img'
-                                src={tirita3}
-                                sx={{ maxWidth: 350, width: '33%', border: '1px solid #333333' }}
-                            />
-                        </Stack>
+                        <Paper elevation={4} sx={{ p: 2 }}>
+                            <Stack
+                                direction='row'
+                                alignItems='center'
+                                justifyContent='center'
+                                gap={1}
+                                sx={{ width: '100%', alignSelf: 'stretch' }}
+                            >
+                                {tirasArr.map((tirita, idx) => (
+                                    <Box
+                                        key={idx}
+                                        component='img'
+                                        src={tirita}
+                                        sx={{ maxWidth: 350, width: '33%', borderRadius: 1 }}
+                                    />
+                                ))}
+                            </Stack>
+                        </Paper>
                     </Stack>
                 </Stack>
             </Container>

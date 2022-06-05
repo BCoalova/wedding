@@ -7,40 +7,8 @@ import { useCallback, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
 
-export default function GuestGrid({ guests }) {
+export default function GuestGrid({ guests, columns }) {
     const gridRef = useRef()
-
-    const columnDefs = useMemo(() => {
-        return [
-            {
-                field: 'open',
-                headerName: 'Leído',
-                sortable: true,
-                maxWidth: 100,
-                resizable: false,
-                cellRenderer: values => (
-                    <Tooltip title='Ver en formularios' placement='right' arrow>
-                        <IconButton component={Link} to='/admin' state={{ guestID: values.data.guestID }}>
-                            {!values.value ? <EmailIcon color='primary' /> : <DraftsIcon />}
-                        </IconButton>
-                    </Tooltip>
-                ),
-            },
-            {
-                field: 'createdAt',
-                headerName: 'Creado',
-                sortable: true,
-                width: 130,
-                cellRenderer: values => convertTimeStampToDate(values.value) + ' hs.',
-            },
-            { field: 'name', headerName: 'Nombre', sortable: true, width: 130 },
-            { field: 'lastName', headerName: 'Apellido', sortable: true, width: 150 },
-            { field: 'age', headerName: 'Edad', sortable: true, width: 200 },
-            { field: 'phone', headerName: 'Teléfono', sortable: true, width: 100 },
-            { field: 'email', headerName: 'Email', sortable: true, width: 150 },
-            { field: 'message', headerName: 'Mensaje', sortable: true },
-        ]
-    }, [])
 
     const defaultColDef = useMemo(() => {
         return {
@@ -64,7 +32,7 @@ export default function GuestGrid({ guests }) {
                 <AgGridReact
                     ref={gridRef}
                     rowData={guests}
-                    columnDefs={columnDefs}
+                    columnDefs={columns}
                     animateRows={true}
                     defaultColDef={defaultColDef}
                     onFirstDataRendered={onDataFetched}

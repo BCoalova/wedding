@@ -8,13 +8,12 @@ const pages = [
     { name: 'Inicio', id: 'inicio' },
     { name: 'Locación', id: 'locacion' },
     { name: 'RSVP', id: 'rsvp' },
+    { name: 'Translado', id: 'translado' },
     { name: 'Regalos', id: 'regalos' },
 ]
 
 function Nav() {
     const { currentUser } = useGlobalContext()
-
-    console.log(currentUser)
 
     return (
         <AppBar

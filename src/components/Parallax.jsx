@@ -1,7 +1,10 @@
 import { Box } from '@mui/material'
 // import parallaxImg from '../assets/img/hero.jpg'
 // import parallaxImg from '../assets/img/eifel.jpg'
-import parallaxImg from '../assets/img/saintchapel.jpg'
+// import parallaxImg from '../assets/img/saintchapel.jpg'
+// import parallaxImg from '../assets/img/GOPR0532.jpg'
+// import parallaxImg from '../assets/img/GOPR1630.jpg'
+import parallaxImg from '../assets/img/GOPR1621.jpg'
 
 export default function Parallax() {
     return (

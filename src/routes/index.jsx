@@ -6,6 +6,7 @@ import Dashboard from '../views/admin/Dashboard'
 import Login from '../views/admin/Login'
 import AllGuests from '../views/admin/AllGuests'
 import AdminNav from '../components/AdminNav'
+import TransportList from '../views/admin/TransportList'
 
 export default function AppRoutes() {
     return (
@@ -36,6 +37,15 @@ export default function AppRoutes() {
                         <PrivateRoute>
                             <AdminNav />
                             <AllGuests />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path='/transporte'
+                    element={
+                        <PrivateRoute>
+                            <AdminNav />
+                            <TransportList />
                         </PrivateRoute>
                     }
                 />

@@ -29,14 +29,14 @@ function LocationInfo() {
                             Locación
                         </Typography>
                         <Divider flexItem />
-                        <Typography sx={{ opacity: 0.6 }}>Dresscode: Formal</Typography>
+                        <Typography sx={{ opacity: 0.6 }}>Dresscode: Elegante</Typography>
                     </Stack>
 
                     <IndividualLocations />
                     <MapSlider />
                 </Stack>
             </Container>
-            <Box
+            {/* <Box
                 sx={{
                     position: 'absolute',
                     bottom: -100,
@@ -47,7 +47,7 @@ function LocationInfo() {
                 }}
             >
                 <Box component='img' src={bottomLeftLeaves} />
-            </Box>
+            </Box> */}
         </Stack>
     )
 }

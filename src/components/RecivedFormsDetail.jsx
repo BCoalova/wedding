@@ -21,6 +21,8 @@ import {
 } from '@mui/material'
 import React from 'react'
 import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
+import RecivedFormsComments from './RecivedFormsComments'
+import RecivedFormsNewComment from './RecivedFormsNewComment'
 
 const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
     const { selectedGuest, handleMarkAsRead, handleUnselectGuest } = props
@@ -95,9 +97,9 @@ const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
                                 </IconButton>
                             </Tooltip>
                         </Stack>
-                        <Stack direction='row' gap={1} alignItems='center'>
+                        <Stack direction='row' gap={1}>
                             <Typography fontWeight={600}>Mensaje: </Typography>
-                            <Typography>{selectedGuest.message}</Typography>
+                            <Typography sx={{ whiteSpace: 'pre-wrap' }}>{selectedGuest.message}</Typography>
                         </Stack>
                     </Stack>
                     <Divider flexItem />
@@ -121,6 +123,18 @@ const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
                             ))}
                         </List>
                     </Stack>
+
+                    {selectedGuest.comments && (
+                        <>
+                            <Divider flexItem />
+                            {selectedGuest.comments.map(commnet => (
+                                <RecivedFormsComments comments={selectedGuest.comments} />
+                            ))}
+                        </>
+                    )}
+                    {/* <Divider flexItem />
+                    {console.log(selectedGuest)}
+                    <RecivedFormsNewComment formID={selectedGuest.guestID} /> */}
                 </Stack>
             </CardContent>
         </Card>

@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { addDoc, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
+import { addDoc, arrayUnion, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
 import useBoolean from '../hooks/useBoolean'
@@ -13,11 +13,14 @@ const useGlobalContext = () => {
 }
 
 const GlobalProvider = ({ children }) => {
-    const [loadingUser, loadingFalse] = useBoolean(true)
-    const [loadingGuests, loadingGuestsFalse, loadingGuestsTrue] = useBoolean(false)
-    const [loadingSendForm, loadingSendFormFalse, loadingSendFormTrue] = useBoolean(false)
     const [currentUser, setCurrentUser] = useState(null)
+    const [loadingUser, loadingFalse] = useBoolean(true)
     const [guests, setGuests] = useState([])
+    const [loadingGuests, loadingGuestsFalse, loadingGuestsTrue] = useBoolean(false)
+    const [transportList, setTransportList] = useState([])
+    const [loadingTransportList, loadingTransportListFalse, loadingTransportListTrue] = useBoolean(false)
+    const [loadingSendTransport, loadingSendTransportFalse, loadingSendTransportTrue] = useBoolean(false)
+    const [loadingSendForm, loadingSendFormFalse, loadingSendFormTrue] = useBoolean(false)
 
     /* Log in user with gmail */
     const login = (email, password) => signInWithEmailAndPassword(auth, email, password)
@@ -47,6 +50,28 @@ const GlobalProvider = ({ children }) => {
         await updateDoc(docToUpdate, {
             open: false,
         })
+    }
+
+    const addNewTransportGuest = async data => {
+        loadingSendTransportTrue()
+        const docRef = await addDoc(collection(db, 'transport'), { ...data, createdAt: serverTimestamp(), transport: 'true' })
+        const addedID = doc(db, 'transport', docRef.id)
+        await updateDoc(addedID, {
+            guestID: docRef.id,
+        })
+        loadingSendTransportFalse()
+    }
+
+    const addNewComment = async (id, data) => {
+        const docToUpdate = doc(db, 'guest', id)
+
+        await updateDoc(docToUpdate, {
+            comments: arrayUnion({ ...data, userEmail: currentUser.email, createdAt: serverTimestamp() }),
+        })
+
+        console.log(currentUser.email)
+        console.log(docToUpdate)
+        console.log(data)
     }
 
     /* log in observer (triggers ) */
@@ -84,6 +109,24 @@ const GlobalProvider = ({ children }) => {
         }
     }, [currentUser, loadingGuestsFalse, loadingGuestsTrue])
 
+    useEffect(() => {
+        if (!currentUser) return
+        loadingTransportListTrue()
+        const q = query(collection(db, 'transport'), where('transport', '==', 'true'))
+        const unsubscribe = onSnapshot(q, querySnapshot => {
+            const newTransportListsArr = []
+            querySnapshot.forEach(doc => {
+                newTransportListsArr.push(doc.data())
+            })
+            setTransportList(newTransportListsArr)
+            loadingTransportListFalse()
+        })
+
+        return () => {
+            unsubscribe()
+        }
+    }, [currentUser, loadingTransportListTrue, loadingTransportListFalse])
+
     const value = {
         currentUser,
         login,
@@ -95,6 +138,11 @@ const GlobalProvider = ({ children }) => {
         loadingSendForm,
         markAsRead,
         markAsUnread,
+        addNewComment,
+        transportList,
+        loadingTransportList,
+        addNewTransportGuest,
+        loadingSendTransport,
     }
 
     return <Provider value={value}>{children}</Provider>
