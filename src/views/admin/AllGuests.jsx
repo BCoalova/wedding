@@ -9,7 +9,6 @@ import topLeftGradient from '../../assets/bg_corners/top-left-dark-green-texture
 import FullHeightCenter from '../../components/FullHeightCenter'
 import GuestGrid from '../../components/GuestGrid'
 import { useGlobalContext } from '../../context/GlobalContext'
-import convertTimeStampToDate from '../../helpers/convertTimeStampToDate'
 
 export default function AllGuests() {
     const { loadingGuests, guests } = useGlobalContext()
