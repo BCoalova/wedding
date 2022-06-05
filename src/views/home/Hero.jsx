@@ -32,7 +32,7 @@ function Hero() {
             <Box
                 sx={{
                     position: 'absolute',
-                    bottom: '-10%',
+                    bottom: '-12%',
                     right: 0,
                     width: { lg: '30%', md: '40%', sm: '60%', xs: '70%' },
                     zIndex: 999,

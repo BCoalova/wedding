@@ -26,7 +26,12 @@ function Confirm() {
                     <Typography variant='h2' color='primary'>
                         R.S.V.P.
                     </Typography>
-                    <Stack direction='row' justifyContent='center' alignItems='start' gap={{ lg: 20, md: 8, sm: 0, xs: 0 }}>
+                    <Stack
+                        direction={{ xs: 'column-reverse', sm: 'column-reverse', md: 'row', lg: 'row' }}
+                        justifyContent='center'
+                        alignItems={{ xs: 'center', sm: 'center', md: 'start', lg: 'start' }}
+                        gap={{ lg: 20, md: 8, sm: 4, xs: 4 }}
+                    >
                         <Stack alignItems='center' sx={{ maxWidth: '550px', width: '100%' }}>
                             <Stack alignContent='center' gap={1}>
                                 <Typography>¡Nos pone muy felices compartir este día con vos!</Typography>
@@ -41,7 +46,8 @@ function Confirm() {
                         <Stack justifyContent='center' alignItems='center' pt={4}>
                             <Box
                                 maxWidth={450}
-                                sx={{ borderRadius: 10, display: { lg: 'block', md: 'block', sm: 'none', xs: 'none' } }}
+                                width='100%'
+                                sx={{ borderRadius: 10 /* display: { lg: 'block', md: 'block', sm: 'none', xs: 'none' } */ }}
                                 component='img'
                                 src={flowers}
                             />
