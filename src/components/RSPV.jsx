@@ -145,7 +145,6 @@ export default function RSPV() {
                         aria-label='toggle password visibility'
                         onClick={() => handleNewComensal()}
                         sx={{ alignSelf: 'start' }}
-                        value={null}
                         type='button'
                     >
                         <AddCircleIcon color='secondary' />

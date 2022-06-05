@@ -8,14 +8,14 @@ const locationsInfo = [
         id: 1,
         title: 'Ceremonia',
         text: 'A las 16.45 hs. en la Parroquia San Roque Plaza 1180, Villa Ortuzar, Ciudad Autónoma de Buenos Aires',
-        link: '#',
+        link: 'https://goo.gl/maps/7ygKCtxfQ11tVPQm7',
         icon: rings,
     },
     {
         id: 2,
         title: 'Recepción',
         text: 'Después de la ceremonia te esperamos para celebrar juntos en Finca La Nicolasa, Fray Luis Beltrán 629, Monte Grande',
-        link: '#',
+        link: 'https://goo.gl/maps/eBNajTZaYqXzwJrc9',
         icon: copas,
     },
 ]
@@ -34,7 +34,14 @@ export default function IndividualLocations() {
                     <Typography variant='h6'>{location.title}</Typography>
                     <Typography>{location.text}</Typography>
                     <Tooltip title='Ver en google maps' placement='bottom' arrow>
-                        <Button component='a' href={location.link} variant='outlined' sx={{ mt: 5 }} startIcon={<MapIcon />}>
+                        <Button
+                            component='a'
+                            href={location.link}
+                            variant='outlined'
+                            sx={{ mt: 5 }}
+                            startIcon={<MapIcon />}
+                            target='_blank'
+                        >
                             Google MAPS
                         </Button>
                     </Tooltip>

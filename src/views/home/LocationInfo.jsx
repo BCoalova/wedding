@@ -1,8 +1,6 @@
 import { Container, Divider, Stack, Typography } from '@mui/material'
-import { Box } from '@mui/system'
-import bottomLeftLeaves from '../../assets/bg_corners/bottom-left-leaves.svg'
-import topRightTexture from '../../assets/bg_corners/top-rigth-light-green-texture.svg'
 import bottomLeftTexture from '../../assets/bg_corners/bottom-left-light-green-texture.svg'
+import topRightTexture from '../../assets/bg_corners/top-rigth-light-green-texture.svg'
 import IndividualLocations from '../../components/IndividualLocations'
 import MapSlider from '../../components/MapSlider'
 
