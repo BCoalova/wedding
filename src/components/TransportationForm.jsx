@@ -36,7 +36,7 @@ export default function TransportationForm() {
                 <TextField required size='small' label='Nombre y apellido' {...bindCompleteName} />
                 <TextField required size='small' label='Correo electrónico' type='email' {...bindEmail} />
                 <Stack direction='row'>
-                    <IconButton disabled={paxCount === 1} variant='outlined' onClick={sub} color='secondary'>
+                    <IconButton disabled={paxCount <= 1 || paxCount === ''} variant='outlined' onClick={sub} color='secondary'>
                         <RemoveCircleIcon />
                     </IconButton>
                     <TextField
