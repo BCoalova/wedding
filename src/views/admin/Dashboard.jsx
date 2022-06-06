@@ -22,14 +22,12 @@ export default function Dashboard() {
         >
             <Container maxWidth='xxl' sx={{ minHeight: 'calc(100vh - 64px)' }}>
                 <Stack gap={10} justifyContent='space-between'>
-                    {!guests.lenght && (
-                        <GuestList
-                            guests={guests}
-                            loadingGuests={loadingGuests}
-                            markAsRead={markAsRead}
-                            markAsUnread={markAsUnread}
-                        />
-                    )}
+                    <GuestList
+                        guests={guests}
+                        loadingGuests={loadingGuests}
+                        markAsRead={markAsRead}
+                        markAsUnread={markAsUnread}
+                    />
                 </Stack>
             </Container>
         </FullHeightCenter>
