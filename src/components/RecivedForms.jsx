@@ -10,6 +10,7 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+    Typography,
     useMediaQuery,
 } from '@mui/material'
 
@@ -25,17 +26,22 @@ export default function RecivedForms({ loadingGuests, guests, handleSelectGuest,
                 {loadingGuests && <CircularProgress color='primary' />}
                 <nav aria-label='Formularios recibidos'>
                     <List dense>
-                        {guests.map(guest => (
-                            <ListItem disablePadding key={guest.guestID}>
-                                <ListItemButton
-                                    onClick={() => handleSelectGuest(guest)}
-                                    selected={guest.guestID === selectedGuest?.guestID}
-                                >
-                                    <ListItemIcon>{guest.open ? <DraftsIcon /> : <EmailIcon color='primary' />}</ListItemIcon>
-                                    <ListItemText primary={<>Email: {guest.email}</>} secondary={<>Teléfono: {guest.phone}</>} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
+                        {guests.length === 0 && <Typography>{guests.length} Formularios recibidos</Typography>}
+                        {!guests.length &&
+                            guests.map(guest => (
+                                <ListItem disablePadding key={guest.guestID}>
+                                    <ListItemButton
+                                        onClick={() => handleSelectGuest(guest)}
+                                        selected={guest.guestID === selectedGuest?.guestID}
+                                    >
+                                        <ListItemIcon>{guest.open ? <DraftsIcon /> : <EmailIcon color='primary' />}</ListItemIcon>
+                                        <ListItemText
+                                            primary={<>Email: {guest.email}</>}
+                                            secondary={<>Teléfono: {guest.phone}</>}
+                                        />
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
                     </List>
                 </nav>
             </CardContent>
