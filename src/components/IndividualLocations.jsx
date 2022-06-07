@@ -1,7 +1,9 @@
-import { Box, Button, Stack, Tooltip, Typography } from '@mui/material'
+import { Box, Button, Divider, Stack, Tooltip, Typography } from '@mui/material'
 import copas from '../assets/img/copas.svg'
 import rings from '../assets/img/rings.svg'
 import MapIcon from '@mui/icons-material/Map'
+import React from 'react'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const locationsInfo = [
     {
@@ -21,31 +23,36 @@ const locationsInfo = [
 ]
 
 export default function IndividualLocations() {
+    const matches = useMediaQuery('(min-width:900px)')
+
     return (
         <Stack
-            direction={{ lg: 'row', sm: 'column', xs: 'column' }}
+            direction={{ xs: 'column', sm: 'column', md: 'row' }}
             justifyContent='center'
             gap={{ lg: 20, md: 16, sm: 12, xs: 8 }}
             sx={{ textAlign: 'center' }}
         >
-            {locationsInfo.map(location => (
-                <Stack key={location.id} maxWidth={400} alignItems='center' gap={2}>
-                    <Box component='img' src={location.icon} sx={{ height: 120, width: '100%' }} />
-                    <Typography variant='h6'>{location.title}</Typography>
-                    <Typography>{location.text}</Typography>
-                    <Tooltip title='Ver en google maps' placement='bottom' arrow>
-                        <Button
-                            component='a'
-                            href={location.link}
-                            variant='outlined'
-                            sx={{ mt: 5 }}
-                            startIcon={<MapIcon />}
-                            target='_blank'
-                        >
-                            Google MAPS
-                        </Button>
-                    </Tooltip>
-                </Stack>
+            {locationsInfo.map((location, index) => (
+                <React.Fragment key={location.id}>
+                    <Stack maxWidth={400} alignItems='center' gap={2}>
+                        <Box component='img' src={location.icon} sx={{ height: 120, width: '100%' }} />
+                        <Typography variant='h6'>{location.title}</Typography>
+                        <Typography>{location.text}</Typography>
+                        <Tooltip title='Ver en google maps' placement='bottom' arrow>
+                            <Button
+                                component='a'
+                                href={location.link}
+                                variant='outlined'
+                                sx={{ mt: 5 }}
+                                startIcon={<MapIcon />}
+                                target='_blank'
+                            >
+                                Google MAPS
+                            </Button>
+                        </Tooltip>
+                    </Stack>
+                    {index === 0 && !matches && <Divider flexItem orientation='horizontal' />}
+                </React.Fragment>
             ))}
         </Stack>
     )

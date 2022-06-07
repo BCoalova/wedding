@@ -24,7 +24,7 @@ import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
 import RecivedFormsComments from './RecivedFormsComments'
 import RecivedFormsNewComment from './RecivedFormsNewComment'
 
-const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
+const RecivedFormsDetail = ({ props }, ref) => {
     const { selectedGuest, handleMarkAsRead, handleUnselectGuest } = props
 
     return (
@@ -139,6 +139,6 @@ const RecivedFormsDetail = React.forwardRef(({ props }, ref) => {
             </CardContent>
         </Card>
     )
-})
+}
 
-export default RecivedFormsDetail
+export default React.forwardRef(RecivedFormsDetail)
