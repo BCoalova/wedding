@@ -41,10 +41,10 @@ function Gifts() {
         >
             <Container maxWidth='xxl'>
                 <Stack justifyContent='center' alignItems='center' sx={{ textAlign: 'center' }} gap={4}>
-                    <Typography variant='h2' color='primary' mb={2}>
+                    <Typography variant='h2' color='primary' mb={1}>
                         Regalos
                     </Typography>
-                    <Stack gap={3} justifyContent='center' alignItems='center'>
+                    <Stack gap={4} justifyContent='center' alignItems='center'>
                         <Stack maxWidth={450} gap={2}>
                             <Typography>
                                 Lo más importante es tu presencia, pero si queres hacernos un regalo podes ayudarnos con nuestra
@@ -80,7 +80,7 @@ function Gifts() {
                                 </Typography>
                             </Stack>
                         </Stack>
-                        <Paper elevation={4} sx={{ p: 2 }}>
+                        <Paper elevation={4} sx={{ p: 2, mt: 2 }}>
                             <Stack
                                 direction='row'
                                 alignItems='center'

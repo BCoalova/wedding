@@ -1,6 +1,7 @@
 import { Container, Divider, Stack, Typography } from '@mui/material'
 import bottomLeftTexture from '../../assets/bg_corners/bottom-left-light-green-texture.svg'
 import topRightTexture from '../../assets/bg_corners/top-rigth-light-green-texture.svg'
+import Dresscode from '../../components/Dresscode'
 import IndividualLocations from '../../components/IndividualLocations'
 import MapSlider from '../../components/MapSlider'
 
@@ -26,11 +27,12 @@ function LocationInfo() {
                         <Typography variant='h2' color='primary'>
                             Locación
                         </Typography>
-                        <Divider flexItem />
-                        <Typography sx={{ opacity: 0.6 }}>Dresscode: Elegante</Typography>
+                        {/* <Divider flexItem />
+                        <Typography sx={{ opacity: 0.6 }}>Dresscode: Elegante</Typography> */}
                     </Stack>
 
                     <IndividualLocations />
+
                     <MapSlider />
                 </Stack>
             </Container>
