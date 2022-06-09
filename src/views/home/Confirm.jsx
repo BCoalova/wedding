@@ -22,7 +22,7 @@ function Confirm() {
             id='rsvp'
         >
             <Container maxWidth='xxl'>
-                <Stack justifyContent='center' alignItems='center' gap={5}>
+                <Stack justifyContent='center' alignItems='center' gap={4}>
                     <Typography variant='h2' color='primary'>
                         R.S.V.P.
                     </Typography>
