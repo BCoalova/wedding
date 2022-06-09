@@ -43,7 +43,12 @@ function Confirm() {
                             </Stack>
                         </Stack>
 
-                        <Stack justifyContent='center' alignItems='center' pt={4}>
+                        <Stack
+                            justifyContent='center'
+                            alignItems='center'
+                            pt={4}
+                            sx={{ pt: { xs: 0, sm: 0, md: 4, lg: 4 }, pb: { xs: 4, sm: 4, md: 0, lg: 0 } }}
+                        >
                             <Box
                                 maxWidth={450}
                                 width='100%'
