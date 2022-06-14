@@ -73,3 +73,9 @@ html {
 #root {
     overflow-x: hidden;
 }
+
+input,
+label,
+textarea {
+    font-size: 1rem;
+}

@@ -17,7 +17,7 @@ export default function RecivedFormsNewComment({ formID }) {
     }
 
     return (
-        <Stack gap={1} component='form' onSubmit={e => handleAddComment(e, formID)}>
+        <Stack gap={1} component='form' onSubmit={e => handleAddComment(e, formID)} sx={{ fontSize: 1 }}>
             <TextField label='Dejar un comentario' size='small' multiline rows={4} {...bind} />
             <Box>
                 <Button variant='outlined' type='submit'>

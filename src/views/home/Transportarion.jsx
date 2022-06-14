@@ -43,8 +43,11 @@ export default function Transportarion() {
                         <DirectionsBusIcon sx={{ fontSize: 80 }} color='primary' />
                         <Typography>
                             Si querés hacer uso de este servicio, completá a continuación tu nombre, mail y la cantidad de
-                            pasajeros. Nos contactaremos con vos para darte información sobre el punto de encuentro, horarios de
-                            partida y regreso y valor de la combi.
+                            pasajeros.{' '}
+                            <Box component='span' fontWeight={500}>
+                                Te enviaremos
+                            </Box>{' '}
+                            información sobre el punto de encuentro, horarios de partida y regreso y valor de la combi.
                         </Typography>
                     </Stack>
                     <TransportationForm />

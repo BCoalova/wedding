@@ -79,7 +79,7 @@ export default function RSPV() {
     }
 
     return (
-        <Box component='form' onSubmit={handleSubmit}>
+        <Box component='form' onSubmit={handleSubmit} sx={{ fontSize: 1 }}>
             <Stack gap={1}>
                 {comensales.map((comensal, index) => (
                     <React.Fragment key={comensal.id}>
@@ -157,7 +157,7 @@ export default function RSPV() {
                 </Stack>
                 <Divider flexItem />
                 <Stack gap={1}>
-                    <Typography fontSize='1rem'>
+                    <Typography>
                         Por favor indicanos si alguno de los asistenes requiere de un menú especial (vegetariano o celíaco)
                     </Typography>
                     <TextField label='Mensaje' size='small' variant='outlined' multiline rows={4} {...bindMessage} />

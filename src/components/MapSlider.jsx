@@ -14,11 +14,11 @@ import useBoolean from '../hooks/useBoolean'
 const tabsContent = [
     {
         id: 1,
-        title: 'Parroquia San Roque',
+        title: 'Cómo llego',
         value: '1',
-        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.9229200312207!2d-58.46949148421761!3d-34.580816863794894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb674952bde1f%3A0x6dd2c8f210115efb!2sPlaza%201180%2C%20C1427CVJ%20CABA!5e0!3m2!1sen!2sar!4v1653501884694!5m2!1sen!2sar',
-        direction: 'Plaza 1180, CABA',
-        href: 'https://goo.gl/maps/7ygKCtxfQ11tVPQm7',
+        src: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d209942.6949924138!2d-58.631624081699336!3d-34.6962348190231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x95bcb674952bde1f%3A0x6dd2c8f210115efb!2sPlaza%201180%2C%20Buenos%20Aires!3m2!1d-34.5808213!2d-58.4673028!4m5!1s0x95bcd1692b368d95%3A0xb7e076ca3ec2b572!2sFray%20Luis%20Beltr%C3%A1n%20629%2C%20Monte%20Grande%2C%20Provincia%20de%20Buenos%20Aires!3m2!1d-34.8190667!2d-58.4775493!5e0!3m2!1ses-419!2sar!4v1653327600894!5m2!1ses-419!2sar',
+        extra: 'Apróximadamente 40/50 minutos',
+        href: 'https://goo.gl/maps/ajjN1oQ3EAgjsE4v7',
     },
     {
         id: 2,
@@ -30,11 +30,11 @@ const tabsContent = [
     },
     {
         id: 3,
-        title: 'Cómo llego',
+        title: 'Parroquia San Roque',
         value: '3',
-        src: 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d209942.6949924138!2d-58.631624081699336!3d-34.6962348190231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x95bcb674952bde1f%3A0x6dd2c8f210115efb!2sPlaza%201180%2C%20Buenos%20Aires!3m2!1d-34.5808213!2d-58.4673028!4m5!1s0x95bcd1692b368d95%3A0xb7e076ca3ec2b572!2sFray%20Luis%20Beltr%C3%A1n%20629%2C%20Monte%20Grande%2C%20Provincia%20de%20Buenos%20Aires!3m2!1d-34.8190667!2d-58.4775493!5e0!3m2!1ses-419!2sar!4v1653327600894!5m2!1ses-419!2sar',
-        extra: 'Apróximadamente 40/50 minutos',
-        href: 'https://goo.gl/maps/ajjN1oQ3EAgjsE4v7',
+        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.9229200312207!2d-58.46949148421761!3d-34.580816863794894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb674952bde1f%3A0x6dd2c8f210115efb!2sPlaza%201180%2C%20C1427CVJ%20CABA!5e0!3m2!1sen!2sar!4v1653501884694!5m2!1sen!2sar',
+        direction: 'Plaza 1180, CABA',
+        href: 'https://goo.gl/maps/7ygKCtxfQ11tVPQm7',
     },
 ]
 

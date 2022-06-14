@@ -50,6 +50,13 @@ const theme = createTheme({
                 },
             },
         },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    fontSize: 16,
+                },
+            },
+        },
     },
     transitions: {
         duration: {
