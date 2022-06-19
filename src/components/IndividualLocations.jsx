@@ -59,7 +59,11 @@ export default function IndividualLocations() {
                         order={matches ? location.order.md : location.order.xs}
                     >
                         <Stack gap={2}>
-                            <Box component='img' src={location.icon} sx={{ height: location.height, width: '100%' }} />
+                            <Box
+                                component='img'
+                                src={location.icon}
+                                sx={{ height: matches ? location.height : 200, width: '100%' }}
+                            />
                             <Typography sx={{ fontSize: location.fontSize === 'small' ? 20 : 22 }} variant='h6'>
                                 {location.title}
                             </Typography>
