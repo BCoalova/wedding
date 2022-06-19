@@ -2,6 +2,7 @@ import { Box, Button, Divider, Stack, Tooltip, Typography } from '@mui/material'
 import copas from '../assets/img/copas.svg'
 import rings from '../assets/img/rings.svg'
 import tie from '../assets/img/tie.svg'
+import dresscode from '../assets/img/Untitled-1.svg'
 import MapIcon from '@mui/icons-material/Map'
 import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -14,15 +15,19 @@ const locationsInfo = [
         link: 'https://goo.gl/maps/7ygKCtxfQ11tVPQm7',
         icon: rings,
         order: { xs: 1, md: 1 },
+        height: 120,
+        fontSize: 'normal',
     },
-    /* {
+    {
         id: 3,
         title: 'Dresscode',
         text: 'Elegante',
         link: '',
-        icon: tie,
+        icon: dresscode,
         order: { xs: 3, md: 2 },
-    }, */
+        height: 90,
+        fontSize: 'small',
+    },
     {
         id: 2,
         title: 'Recepción',
@@ -30,6 +35,8 @@ const locationsInfo = [
         link: 'https://goo.gl/maps/eBNajTZaYqXzwJrc9',
         icon: copas,
         order: { xs: 2, md: 3 },
+        height: 120,
+        fontSize: 'normal',
     },
 ]
 
@@ -45,9 +52,18 @@ export default function IndividualLocations() {
         >
             {locationsInfo.map((location, index) => (
                 <React.Fragment key={location.id}>
-                    <Stack maxWidth={400} alignItems='center' gap={2} order={matches ? location.order.md : location.order.xs}>
-                        <Box component='img' src={location.icon} sx={{ height: 120, width: '100%' }} />
-                        <Typography variant='h6'>{location.title}</Typography>
+                    <Stack
+                        maxWidth={400}
+                        alignItems='center'
+                        gap={location.fontSize === 'small' ? 1 : 2}
+                        order={matches ? location.order.md : location.order.xs}
+                    >
+                        <Stack gap={2}>
+                            <Box component='img' src={location.icon} sx={{ height: location.height, width: '100%' }} />
+                            <Typography sx={{ fontSize: location.fontSize === 'small' ? 20 : 22 }} variant='h6'>
+                                {location.title}
+                            </Typography>
+                        </Stack>
                         <Typography>{location.text}</Typography>
                         {location.link && (
                             <Tooltip title='Ver en google maps' placement='bottom' arrow>
@@ -55,7 +71,7 @@ export default function IndividualLocations() {
                                     component='a'
                                     href={location.link}
                                     variant='outlined'
-                                    sx={{ mt: 5 }}
+                                    sx={{ mt: 2 }}
                                     startIcon={<MapIcon />}
                                     target='_blank'
                                 >
