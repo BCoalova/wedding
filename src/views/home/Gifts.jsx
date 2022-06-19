@@ -1,27 +1,46 @@
-import { Box, Container, Link, Paper, Stack, Tooltip, Typography } from '@mui/material'
-import FullHeightCenter from '../../components/FullHeightCenter'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Box, Button, Container, Icon, IconButton, Link, Paper, Stack, Tooltip, Typography } from '@mui/material'
+import topLeftTexture from '../../assets/bg_corners/top-left-light-green-texture.svg'
 import giftsIcon from '../../assets/img/sorpresa.svg'
 import tirita1 from '../../assets/img/tirita-1.jpg'
 import tirita2 from '../../assets/img/tirita-2.jpg'
 import tirita3 from '../../assets/img/tirita-3.jpg'
-import topLeftTexture from '../../assets/bg_corners/top-left-light-green-texture.svg'
-import useBoolean from '../../hooks/useBoolean'
+import FullHeightCenter from '../../components/FullHeightCenter'
 import copyToClipboard from '../../helpers/copyToClipboard'
-
+import useBoolean from '../../hooks/useBoolean'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 const tirasArr = [tirita1, tirita2, tirita3]
 
 function Gifts() {
     const [isOpenCBU, closeCBU, openCBU] = useBoolean(false)
     const [isOpenAlias, closeAlias, openAlias] = useBoolean(false)
+    const [isOpenNCuenta, closeNCuenta, openNCuenta] = useBoolean(false)
+    const [isOpenDNI, closeDNI, openDNI] = useBoolean(false)
+    const [isCBU, , , , toggleCBU] = useBoolean(false)
+
     const handleCopy = (string, type) => {
         copyToClipboard(string)
 
-        if (type === 'CBU') {
-            openCBU()
-            setTimeout(() => closeCBU(), 1500)
-        } else if (type === 'Alias') {
-            openAlias()
-            setTimeout(() => closeAlias(), 1500)
+        switch (type) {
+            case 'CBU':
+                openCBU()
+                setTimeout(() => closeCBU(), 1500)
+                break
+            case 'Alias':
+                openAlias()
+                setTimeout(() => closeAlias(), 1500)
+                break
+            case 'NCuenta':
+                openNCuenta()
+                setTimeout(() => closeNCuenta(), 1500)
+                break
+            case 'DNI':
+                openDNI()
+                setTimeout(() => closeDNI(), 1500)
+                break
+
+            default:
+                break
         }
     }
 
@@ -52,32 +71,65 @@ function Gifts() {
                             </Typography>
                             <Box component='img' src={giftsIcon} sx={{ height: 100, width: '100%' }} />
 
-                            <Stack>
+                            <Stack gap={2}>
                                 <Typography>Te dejamos los datos de nuestra cuenta</Typography>
-                                <Typography>
-                                    Alias:{' '}
-                                    <Tooltip title='Copiado' arrow open={isOpenAlias} placement='top'>
-                                        <Link
-                                            underline='none'
-                                            onClick={() => handleCopy('maruyboris', 'Alias')}
-                                            sx={{ cursor: 'pointer' }}
-                                        >
-                                            maruyboris
-                                        </Link>
-                                    </Tooltip>
-                                </Typography>
-                                <Typography>
-                                    CBU:{' '}
-                                    <Tooltip title='Copiado' arrow open={isOpenCBU} placement='top'>
-                                        <Link
-                                            underline='none'
-                                            onClick={() => handleCopy('0720575088000001520154', 'CBU')}
-                                            sx={{ cursor: 'pointer' }}
-                                        >
-                                            0720575088000001520154
-                                        </Link>
-                                    </Tooltip>
-                                </Typography>
+                                <Box>
+                                    <Button variant='outlined' size='small' onClick={toggleCBU}>
+                                        {isCBU ? 'ocultar datos' : 'Ver Datos'}
+                                    </Button>
+                                </Box>
+                                {isCBU && (
+                                    <Stack>
+                                        <Typography>
+                                            Alias:{' '}
+                                            <Tooltip title='Copiado' arrow open={isOpenAlias} placement='top'>
+                                                <Link
+                                                    underline='none'
+                                                    onClick={() => handleCopy('maruyboris', 'Alias')}
+                                                    sx={{ cursor: 'pointer' }}
+                                                >
+                                                    maruyboris
+                                                </Link>
+                                            </Tooltip>
+                                        </Typography>
+                                        <Typography>
+                                            CBU:{' '}
+                                            <Tooltip title='Copiado' arrow open={isOpenCBU} placement='top'>
+                                                <Link
+                                                    underline='none'
+                                                    onClick={() => handleCopy('0720575088000001520154', 'CBU')}
+                                                    sx={{ cursor: 'pointer' }}
+                                                >
+                                                    0720575088000001520154
+                                                </Link>
+                                            </Tooltip>
+                                        </Typography>
+                                        <Typography>
+                                            N° de cuenta:{' '}
+                                            <Tooltip title='Copiado' arrow open={isOpenNCuenta} placement='top'>
+                                                <Link
+                                                    underline='none'
+                                                    onClick={() => handleCopy('575-015201/5', 'NCuenta')}
+                                                    sx={{ cursor: 'pointer' }}
+                                                >
+                                                    575-015201/5
+                                                </Link>
+                                            </Tooltip>
+                                        </Typography>
+                                        <Typography>
+                                            DNI:{' '}
+                                            <Tooltip title='Copiado' arrow open={isOpenDNI} placement='top'>
+                                                <Link
+                                                    underline='none'
+                                                    onClick={() => handleCopy('34358687', 'DNI')}
+                                                    sx={{ cursor: 'pointer' }}
+                                                >
+                                                    34358687
+                                                </Link>
+                                            </Tooltip>
+                                        </Typography>
+                                    </Stack>
+                                )}
                             </Stack>
                         </Stack>
                         <Paper elevation={4} sx={{ p: 2, mt: 2 }}>
