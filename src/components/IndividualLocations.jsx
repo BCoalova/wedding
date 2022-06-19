@@ -62,7 +62,7 @@ export default function IndividualLocations() {
                             <Box
                                 component='img'
                                 src={location.icon}
-                                sx={{ height: matches ? location.height : 200, width: '100%' }}
+                                sx={{ height: matches ? location.height : 120, width: '100%' }}
                             />
                             <Typography sx={{ fontSize: location.fontSize === 'small' ? 20 : 22 }} variant='h6'>
                                 {location.title}
