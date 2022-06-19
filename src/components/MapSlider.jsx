@@ -112,7 +112,7 @@ function MapSlider() {
                                     <Tooltip title='Copiado' arrow open={isOpen}>
                                         <IconButton
                                             size='small'
-                                            color='secondary'
+                                            color='primary'
                                             mt={2}
                                             onClick={() => handleCopyDirection(direction)}
                                         >
@@ -125,7 +125,7 @@ function MapSlider() {
                                     href={href}
                                     target='_blank'
                                     size='small'
-                                    color='secondary'
+                                    color='primary'
                                     mt={2}
                                     title='Google Maps'
                                     variant='outlined'
