@@ -27,7 +27,7 @@ export default function RecivedForms({ loadingGuests, guests, handleSelectGuest,
                 <nav aria-label='Formularios recibidos'>
                     <List dense>
                         {guests.length === 0 && <Typography>{guests.length} Formularios recibidos</Typography>}
-                        {!guests.length &&
+                        {!!guests.length &&
                             guests.map(guest => (
                                 <ListItem disablePadding key={guest.guestID}>
                                     <ListItemButton

@@ -37,7 +37,7 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
 
     return (
         <Stack direction='row' gap={2} justifyContent='start' minWidth='100%' flexGrow={1}>
-            {matches && selectedGuest ? null : (
+            {matches && !!selectedGuest ? null : (
                 <RecivedForms
                     loadingGuests={loadingGuests}
                     guests={guests}
