@@ -36,7 +36,6 @@ export default function AllGuests() {
                 width: 130,
 
                 cellRenderer: values => {
-                    console.log(values)
                     return values.value + ' hs.'
                 },
             },
