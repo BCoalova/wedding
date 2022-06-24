@@ -153,7 +153,7 @@ export default function RSPV() {
                 <Divider flexItem />
                 <Stack gap={1}>
                     <TextField required label='Correo electrónico' size='small' type='email' variant='outlined' {...bindEmail} />
-                    <TextField required label='Teléfono' size='small' variant='outlined' type='number' {...bindPhone} />
+                    <TextField required label='Teléfono' size='small' variant='outlined' type='tel' {...bindPhone} />
                 </Stack>
                 <Divider flexItem />
                 <Stack gap={1}>
