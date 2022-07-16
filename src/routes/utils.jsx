@@ -1,5 +1,6 @@
 import { Backdrop, CircularProgress } from '@mui/material'
 import { Navigate } from 'react-router-dom'
+import AdminNav from '../components/AdminNav'
 import { useGlobalContext } from '../context/GlobalContext'
 
 export default function PrivateRoute({ children }) {
@@ -12,5 +13,12 @@ export default function PrivateRoute({ children }) {
             </Backdrop>
         )
 
-    return currentUser ? children : <Navigate to='/login' />
+    return currentUser ? (
+        <>
+            <AdminNav />
+            {children}
+        </>
+    ) : (
+        <Navigate to='/login' />
+    )
 }

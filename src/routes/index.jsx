@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Nav from '../components/Nav'
-import Home from '../views/home'
-import PrivateRoute from './utils'
+import AllGuests from '../views/admin/AllGuests'
 import Dashboard from '../views/admin/Dashboard'
 import Login from '../views/admin/Login'
-import AllGuests from '../views/admin/AllGuests'
-import AdminNav from '../components/AdminNav'
 import TransportList from '../views/admin/TransportList'
+import Home from '../views/home'
+import PrivateRoute from './utils'
 
 export default function AppRoutes() {
     return (
@@ -26,7 +25,6 @@ export default function AppRoutes() {
                     path='/admin'
                     element={
                         <PrivateRoute>
-                            <AdminNav />
                             <Dashboard />
                         </PrivateRoute>
                     }
@@ -35,7 +33,6 @@ export default function AppRoutes() {
                     path='/confirmados'
                     element={
                         <PrivateRoute>
-                            <AdminNav />
                             <AllGuests />
                         </PrivateRoute>
                     }
@@ -44,7 +41,6 @@ export default function AppRoutes() {
                     path='/transporte'
                     element={
                         <PrivateRoute>
-                            <AdminNav />
                             <TransportList />
                         </PrivateRoute>
                     }
