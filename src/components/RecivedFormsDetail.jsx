@@ -24,13 +24,9 @@ import convertTimeStampToDate from '../helpers/convertTimeStampToDate'
 import RecivedFormsComments from './RecivedFormsComments'
 import RecivedFormsNewComment from './RecivedFormsNewComment'
 
-const RecivedFormsDetail = ({ props }, ref) => {
-    const { selectedGuest, handleMarkAsRead, handleUnselectGuest } = props
-
+const RecivedFormsDetail = ({ selectedGuest, handleMarkAsRead, handleUnselectGuest, comments, deleteComment }) => {
     return (
         <Card
-            ref={ref}
-            {...props}
             className='overflowY'
             sx={{ px: 4, py: 4, my: 2, flexGrow: 1, height: `calc(100vh - 96px)`, overflowY: 'auto', zIndex: 1 }}
         >
@@ -123,22 +119,25 @@ const RecivedFormsDetail = ({ props }, ref) => {
                             ))}
                         </List>
                     </Stack>
-
-                    {selectedGuest.comments && (
+                    <Divider flexItem />
+                    <Typography>Comentarios: </Typography>
+                    {!!comments.length && (
                         <>
-                            <Divider flexItem />
-                            {selectedGuest.comments.map(commnet => (
-                                <RecivedFormsComments comments={selectedGuest.comments} />
+                            {comments.map((comment, index) => (
+                                <>
+                                    <RecivedFormsComments comment={comment} deleteComment={deleteComment} />
+                                    {comments.length !== index + 1 && <Divider flexItem />}
+                                </>
                             ))}
+                            {}
                         </>
                     )}
-                    {/* <Divider flexItem />
-                    {console.log(selectedGuest)}
-                    <RecivedFormsNewComment formID={selectedGuest.guestID} /> */}
+
+                    <RecivedFormsNewComment formID={selectedGuest.guestID} />
                 </Stack>
             </CardContent>
         </Card>
     )
 }
 
-export default React.forwardRef(RecivedFormsDetail)
+export default RecivedFormsDetail

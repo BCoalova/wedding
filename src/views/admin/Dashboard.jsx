@@ -5,7 +5,7 @@ import GuestList from '../../components/GuestList'
 import { useGlobalContext } from '../../context/GlobalContext'
 
 export default function Dashboard() {
-    const { guests, loadingGuests, markAsRead, markAsUnread } = useGlobalContext()
+    const { guests, loadingGuests, markAsRead, markAsUnread, deleteComment } = useGlobalContext()
 
     return (
         <FullHeightCenter
@@ -27,6 +27,7 @@ export default function Dashboard() {
                         loadingGuests={loadingGuests}
                         markAsRead={markAsRead}
                         markAsUnread={markAsUnread}
+                        deleteComment={deleteComment}
                     />
                 </Stack>
             </Container>

@@ -1,13 +1,15 @@
-import { Slide, Stack, useMediaQuery } from '@mui/material'
+import { Stack, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useGlobalContext } from '../context/GlobalContext'
 import RecivedForms from './RecivedForms'
 import RecivedFormsDetail from './RecivedFormsDetail'
 
-export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnread }) {
+export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnread, deleteComment }) {
     const matches = useMediaQuery('(max-width:1132px)')
 
     const [selectedGuest, setSelectedGuest] = useState(null)
+    const { comments } = useGlobalContext()
 
     let { state } = useLocation()
 
@@ -47,18 +49,13 @@ export default function GuestList({ guests, loadingGuests, markAsRead, markAsUnr
                 />
             )}
             {selectedGuest && (
-                <Slide
-                    direction='right'
-                    in={!!selectedGuest}
-                    mountOnEnter
-                    unmountOnExit
-                    easing={{
-                        enter: 'cubic-bezier(.69,.05,.2,1.08)',
-                        exit: 'linear',
-                    }}
-                >
-                    <RecivedFormsDetail props={{ selectedGuest, handleMarkAsRead, handleUnselectGuest }} />
-                </Slide>
+                <RecivedFormsDetail
+                    selectedGuest={selectedGuest}
+                    handleMarkAsRead={handleMarkAsRead}
+                    handleUnselectGuest={handleUnselectGuest}
+                    comments={comments.filter(comment => comment.guestID === selectedGuest.guestID)}
+                    deleteComment={deleteComment}
+                />
             )}
         </Stack>
     )
