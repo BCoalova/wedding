@@ -11,7 +11,7 @@ const pages = [
     { name: 'Inicio', id: 'inicio' },
     { name: 'Locación', id: 'locacion' },
     { name: 'RSVP', id: 'rsvp' },
-    { name: 'Translado', id: 'translado' },
+    { name: 'Traslado', id: 'traslado' },
     { name: 'Regalos', id: 'regalos' },
 ]
 

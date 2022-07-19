@@ -14,7 +14,7 @@ import usePaxCount from '../../hooks/usePaxCount'
 export default function Transportarion() {
     return (
         <FullHeightCenter
-            id='translado'
+            id='traslado'
             sx={{
                 backgroundImage: `url(${topRightTexture}), url(${bottomLeftTexture})`,
                 backgroundRepeat: 'no-repeat',
@@ -34,10 +34,10 @@ export default function Transportarion() {
                 <Stack sx={{ maxWidth: 600, width: '100%' }} gap={3}>
                     <Stack gap={2} alignItems='center' justifyContent='center'>
                         <Typography variant='h2' color='primary'>
-                            Translado
+                            Traslado
                         </Typography>
                         <Typography>
-                            Vamos a coordinar un servicio de translado ida y vuelta desde la Parroquia San Roque hasta Finca La
+                            Vamos a coordinar un servicio de traslado ida y vuelta desde la Parroquia San Roque hasta Finca La
                             Nicolasa para aquellos invitados que prefieran no ir en auto.
                         </Typography>
                         <DirectionsBusIcon sx={{ fontSize: 80 }} color='primary' />
