@@ -8,4 +8,3 @@ export default function convertTimeStampToDate(timestamp) {
     return `${date}/${month}/${years} ${hour}:${minutes}`
 }
 let hola = 'hola'
-export { hola }

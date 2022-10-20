@@ -36,11 +36,8 @@ function Confirm() {
                             <Stack alignContent='center' gap={1}>
                                 <Typography>¡Nos pone muy felices compartir este día con vos!</Typography>
                                 <Typography>
-                                    Por favor confirmá asistencia antes del{' '}
-                                    <Box component='span' sx={{ fontWeight: 500 }}>
-                                        18 de octubre
-                                    </Box>{' '}
-                                    completando el formulario con los datos de todos de los asistentes
+                                    Por favor confirmá asistencia completando el formulario con los datos de todos de los
+                                    asistentes
                                 </Typography>
                                 <RSPV />
                             </Stack>
